@@ -1,0 +1,26 @@
+﻿{
+  "Environments": [
+    {
+      "bindingCulture": {
+        "language": "en-us"
+      },
+      "language": {
+        "feature": "en-us"
+      },
+
+      "Name": "Test",
+      "Browser":  "Chrome", 
+      "CheckoutUrl": "https://stage.yaleappliance.com/shopping-cart",
+      "User": {
+        "FirstName": "Test",
+        "LastName": "Test",
+        "Phone": "2342345344",
+        "Email": "testing@venuiti.com",
+        "State": "Massachusetts",
+        "City": "Boston",
+        "StreetAddress": "123 Testing Lane"
+      }
+    }
+  ]
+}
+

@@ -5,7 +5,7 @@
 	And go through the checkout process successfully. 
 
 @checkout
-Scenario Outline: Place an Order  
+Scenario Outline: Place an Order 
 	Given User is on a product page
 	And   Product is added to cart
 	And   Delivery details are added

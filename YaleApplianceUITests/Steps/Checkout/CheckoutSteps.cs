@@ -1,58 +1,64 @@
 ﻿using NUnit.Framework;
 using TechTalk.SpecFlow;
+using YaleApplianceUITests.Pages;
 
 namespace YaleApplianceUITests.Steps.Checkout
 {
     [Binding, Parallelizable]
     public sealed class CheckoutSteps
     {
-        // For additional details on SpecFlow step definitions see https://go.specflow.org/doc-stepdef
-
+        
         private readonly ScenarioContext _scenarioContext;
+        private readonly CheckoutPage _checkoutPage;
 
-        public CheckoutSteps(ScenarioContext scenarioContext)
+        public CheckoutSteps(ScenarioContext scenarioContext, CheckoutPage checkoutPage)
         {
             _scenarioContext = scenarioContext;
+            _checkoutPage = checkoutPage;
         }
 
-        [Given("the first number is (.*)")]
-        public void GivenTheFirstNumberIs(int number)
+        [Given(@"User is on a product page")]
+        public void GivenUserIsOnAProductPage()
         {
-            //TODO: implement arrange (precondition) logic
-            // For storing and retrieving scenario-specific data see https://go.specflow.org/doc-sharingdata 
-            // To use the multiline text or the table argument of the scenario,
-            // additional string/Table parameters can be defined on the step definition
-            // method. 
-
-            _scenarioContext.Pending();
+           // ScenarioContext.Current.Pending();
+           _checkoutPage.GoToCheckoutPage();
         }
 
-        [Given("the second number is (.*)")]
-        public void GivenTheSecondNumberIs(int number)
+        [Given(@"Product is added to cart")]
+        public void GivenProductIsAddedToCart()
         {
-            //TODO: implement arrange (precondition) logic
-            // For storing and retrieving scenario-specific data see https://go.specflow.org/doc-sharingdata 
-            // To use the multiline text or the table argument of the scenario,
-            // additional string/Table parameters can be defined on the step definition
-            // method. 
-
-            _scenarioContext.Pending();
+           // ScenarioContext.Current.Pending();
         }
 
-        [When("the two numbers are added")]
-        public void WhenTheTwoNumbersAreAdded()
+        [Given(@"Delivery details are added")]
+        public void GivenDeliveryDetailsAreAdded()
         {
-            //TODO: implement act (action) logic
-
-            _scenarioContext.Pending();
+           // ScenarioContext.Current.Pending();
         }
 
-        [Then("the result should be (.*)")]
-        public void ThenTheResultShouldBe(int result)
+        [Given(@"Billing details visa are added")]
+        public void GivenBillingDetailsVisaAreAdded()
         {
-            //TODO: implement assert (verification) logic
-
-            _scenarioContext.Pending();
+            //ScenarioContext.Current.Pending();
         }
+
+        [Given(@"Payment detils are added")]
+        public void GivenPaymentDetilsAreAdded()
+        {
+            //ScenarioContext.Current.Pending();
+        }
+
+        [When(@"Placing Order")]
+        public void WhenPlacingOrder()
+        {
+            //ScenarioContext.Current.Pending();
+        }
+
+        [Then(@"Order should be placed sucessfully")]
+        public void ThenOrderShouldBePlacedSucessfully()
+        {
+           // ScenarioContext.Current.Pending();
+        }
+
     }
 }
