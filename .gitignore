@@ -50,3 +50,7 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+/YaleApplianceUITests/obj
+/YaleApplianceUITests/bin/Debug/netcoreapp3.1
+/.vs/YaleApplianceUITests/v16
+/.vs
