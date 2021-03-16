@@ -14,6 +14,7 @@ namespace YaleApplianceUITests.Drivers
         {
 
             var options = new ChromeOptions();
+            options.AddArgument("--start-maximized");
             options.AddArgument("--lang=en");
             options.AddArgument("--ignore-certificate-errors");
             options.AddArgument("--disable-extensions");

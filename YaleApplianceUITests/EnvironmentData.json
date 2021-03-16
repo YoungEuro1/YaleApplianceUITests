@@ -9,8 +9,8 @@
       },
 
       "Name": "Test",
-      "Browser":  "Chrome", 
-      "CheckoutUrl": "https://stage.yaleappliance.com/shopping-cart",
+      "Browser": "Chrome",
+      "CheckoutUrl": "https://www.yaleappliance.com/kitchen/refrigeration-appliances/counter-depth/french-door/RF18HFENBSR#CallForPricing8958",
       "User": {
         "FirstName": "Test",
         "LastName": "Test",

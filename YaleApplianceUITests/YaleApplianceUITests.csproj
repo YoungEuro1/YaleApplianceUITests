@@ -38,8 +38,4 @@
     <PackageReference Include="SpecFlow.Tools.MsBuild.Generation" Version="3.7.13" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="SharedLibrary\" />
-  </ItemGroup>
-
 </Project>

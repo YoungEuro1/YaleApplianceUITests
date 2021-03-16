@@ -27,7 +27,7 @@ namespace YaleApplianceUITests.Steps.Checkout
         [Given(@"Product is added to cart")]
         public void GivenProductIsAddedToCart()
         {
-           // ScenarioContext.Current.Pending();
+            _checkoutPage.ClickGetItNowBtn();
         }
 
         [Given(@"Delivery details are added")]

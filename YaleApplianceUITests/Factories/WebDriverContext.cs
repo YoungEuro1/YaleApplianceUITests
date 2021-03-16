@@ -18,6 +18,7 @@ namespace YaleApplianceUITests.Factories
 
             //Chrome must be in system path to run
             var options = new ChromeOptions();
+            options.AddArgument("--start-maximized");
             options.AddArgument("--lang=en");
             options.AddArgument("--ignore-certificate-errors");
             options.AddArgument("--disable-extensions");
@@ -26,6 +27,9 @@ namespace YaleApplianceUITests.Factories
             options.AddArgument("--disable-gpu");
             options.AddArgument("--no-sandbox");
             options.AddArgument("--enable-logging");
+
+
+
             //var proxy = new Proxy {Kind = ProxyKind.Direct};
             //var codeBase = Assembly.GetExecutingAssembly().CodeBase;
             //var uri = new UriBuilder(codeBase);
