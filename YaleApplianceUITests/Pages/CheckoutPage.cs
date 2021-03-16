@@ -1,24 +1,25 @@
-﻿using YaleApplianceUITests.Fixtures;
-using YaleApplianceUITests.Helpers;
+﻿using YaleApplianceUITests.Factories;
+using YaleApplianceUITests.Fixtures;
+
 
 namespace YaleApplianceUITests.Pages
 {
     public class CheckoutPage
     {
         private readonly EnvironmentFixture _environmentFixture;
-        private readonly BrowserHelper _browserHelper;
-    
+        private readonly WebDriverContext _webDriverContext;
+        
 
-        public CheckoutPage(BrowserHelper browserHelper, EnvironmentFixture environmentFixture)
+        public CheckoutPage(WebDriverContext webDriverContext, EnvironmentFixture environmentFixture)
         {
             _environmentFixture = environmentFixture;
-            _browserHelper = browserHelper;
+            _webDriverContext = webDriverContext;
         }
 
 
         public CheckoutPage GoToCheckoutPage()
         {
-            _browserHelper.Driver.Navigate().GoToUrl(_environmentFixture.Environment.CheckoutUrl);
+            _webDriverContext.Driver.Navigate().GoToUrl(_environmentFixture.Environment.CheckoutUrl);
             return this;
         }
 

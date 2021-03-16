@@ -39,7 +39,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Factories\" />
     <Folder Include="SharedLibrary\" />
   </ItemGroup>
 
