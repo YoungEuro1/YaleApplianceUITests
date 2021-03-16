@@ -29,6 +29,8 @@ namespace YaleApplianceUITests.Helpers
                     return new ChromeWebDriver();
                 case "firefox":
                     return new FireFoxWebDriver();
+                case "edge":
+                    return new EdgeWebDriver();
                 default:
                     throw new Exception(
                         $"{browser} browser is not supported");

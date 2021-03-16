@@ -34,7 +34,6 @@ namespace YaleApplianceUITests
         }
 
 
-
         [BeforeTestRun]
         public static void RunBeforeAllTests(string browser)
         {
