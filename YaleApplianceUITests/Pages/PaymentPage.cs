@@ -109,41 +109,6 @@ namespace YaleApplianceUITests.Pages
         }
 
 
-        //private void ChooseState()
-        //{
-        //    {
-        //        int attempts = 0;
-        //        try
-        //        {
-
-        //            while (attempts <= 5)
-        //            {
-        //                IList<IWebElement> State = _webDriverContext.Driver.FindElements(_state);
-        //                int DpListCount = State.Count;
-        //                for (int i = 0; i < DpListCount; i++)
-        //                {
-        //                    if (State[i].Text == "Massachusetts")
-        //                    {
-        //                        State[i].Click();
-        //                        break;
-        //                    }
-
-        //                    attempts++;
-        //                }
-
-        //                Console.WriteLine(DpListCount);
-        //                Console.ReadLine();
-        //            }
-        //        }
-        //        catch (Exception e)
-        //        {
-        //            Console.WriteLine(e.Message);
-
-        //        }
-        //    }
-        //}
-
-
         public PaymentPage PaymentMethodHelper(string paymentType)
         {
 
