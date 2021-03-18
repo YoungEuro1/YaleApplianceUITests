@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.Extensions;
@@ -110,39 +109,39 @@ namespace YaleApplianceUITests.Pages
         }
 
 
-        private void ChooseState()
-        {
-            {
-                int attempts = 0;
-                try
-                {
+        //private void ChooseState()
+        //{
+        //    {
+        //        int attempts = 0;
+        //        try
+        //        {
 
-                    while (attempts <= 5)
-                    {
-                        IList<IWebElement> State = _webDriverContext.Driver.FindElements(_state);
-                        int DpListCount = State.Count;
-                        for (int i = 0; i < DpListCount; i++)
-                        {
-                            if (State[i].Text == "Massachusetts")
-                            {
-                                State[i].Click();
-                                break;
-                            }
+        //            while (attempts <= 5)
+        //            {
+        //                IList<IWebElement> State = _webDriverContext.Driver.FindElements(_state);
+        //                int DpListCount = State.Count;
+        //                for (int i = 0; i < DpListCount; i++)
+        //                {
+        //                    if (State[i].Text == "Massachusetts")
+        //                    {
+        //                        State[i].Click();
+        //                        break;
+        //                    }
 
-                            attempts++;
-                        }
+        //                    attempts++;
+        //                }
 
-                        Console.WriteLine(DpListCount);
-                        Console.ReadLine();
-                    }
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.Message);
+        //                Console.WriteLine(DpListCount);
+        //                Console.ReadLine();
+        //            }
+        //        }
+        //        catch (Exception e)
+        //        {
+        //            Console.WriteLine(e.Message);
 
-                }
-            }
-        }
+        //        }
+        //    }
+        //}
 
 
         public PaymentPage PaymentMethodHelper(string paymentType)
@@ -187,7 +186,6 @@ namespace YaleApplianceUITests.Pages
             _webDriverContext.Driver.ExecuteJavaScript(PlaceOrderBtn);
             return this;
         }
-
 
     }
     }

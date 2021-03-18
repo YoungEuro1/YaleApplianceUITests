@@ -4,11 +4,11 @@ namespace YaleApplianceUITests.Steps
 {
     public abstract class BaseSteps : TechTalk.SpecFlow.Steps
     {
-        protected static EnvironmentFixture _environmentFixture;
+        protected static EnvironmentFixture EnvironmentFixture;
 
         public BaseSteps()
         {
-            _environmentFixture = new EnvironmentFixture();
+            EnvironmentFixture = new EnvironmentFixture();
 
         }
     }

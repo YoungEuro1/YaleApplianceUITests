@@ -1,9 +1,9 @@
 ﻿using System;
 using System.IO;
 using System.Reflection;
+using Microsoft.Edge.SeleniumTools;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Edge;
 using YaleApplianceUITests.Steps;
 
 
@@ -16,7 +16,7 @@ namespace YaleApplianceUITests.Factories
 
         public WebDriverContext() : base()
         {
-            SwitchToBrowser(_environmentFixture.Environment.Browser);
+            SwitchToBrowser(EnvironmentFixture.Environment.Browser);
         }
 
         #region WebDrivers
@@ -48,6 +48,8 @@ namespace YaleApplianceUITests.Factories
         private WebDriverContext Edge()
         {
             var options = new EdgeOptions();
+            options.AddAdditionalCapability("InPrivate", true);
+            //options.AddArgument("headless");
             var codeBase = Assembly.GetExecutingAssembly().CodeBase;
             var uri = new UriBuilder(codeBase);
             var path = Uri.UnescapeDataString(uri.Path);
@@ -55,18 +57,16 @@ namespace YaleApplianceUITests.Factories
             var service = EdgeDriverService.CreateDefaultService(directoryPath + "\\drivers", "msedgedriver.exe");
             service.UseVerboseLogging.Equals(true);
             this.Driver = new EdgeDriver(service,options);
-        
+            Driver.Manage().Window.Maximize();
+            Driver.Manage().Cookies.DeleteAllCookies();
             return this;
         }
-    
-    
+        
          #endregion
 
-
-
-    private WebDriverContext SwitchToBrowser(string browser)
+         private WebDriverContext SwitchToBrowser(string browser)
         {
-            browser = _environmentFixture.Environment.Browser;
+            browser = EnvironmentFixture.Environment.Browser;
             switch (browser.ToLower())
             {
                 case "chrome":
@@ -79,8 +79,6 @@ namespace YaleApplianceUITests.Factories
 
             }
         }
-
-
     }
 
 }

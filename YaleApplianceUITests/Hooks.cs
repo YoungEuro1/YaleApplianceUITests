@@ -2,7 +2,6 @@
 using TechTalk.SpecFlow;
 using YaleApplianceUITests.Factories;
 using YaleApplianceUITests.Fixtures;
-using YaleApplianceUITests.Helpers;
 
 
 namespace YaleApplianceUITests
@@ -15,7 +14,6 @@ namespace YaleApplianceUITests
         private static  ScenarioContext _scenarioContext;
         private static EnvironmentFixture _environmentFixture;
         private static WebDriverContext _webDriverContext;
-        private static BrowserHelper _browserHelper;
 
 
 
@@ -24,8 +22,6 @@ namespace YaleApplianceUITests
             _objectContainer = objectContainer;
             _scenarioContext = scenarioContext;
             _environmentFixture = environmentFixture;
-            _browserHelper = new BrowserHelper(_environmentFixture);
-
         }
 
 
