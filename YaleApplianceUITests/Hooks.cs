@@ -12,17 +12,17 @@ namespace YaleApplianceUITests
     {
         
         private readonly IObjectContainer _objectContainer;
-        // private readonly ScenarioContext _scenarioContext;
+        private static  ScenarioContext _scenarioContext;
         private static EnvironmentFixture _environmentFixture;
         private static WebDriverContext _webDriverContext;
         private static BrowserHelper _browserHelper;
 
 
 
-        public Hooks(IObjectContainer objectContainer, EnvironmentFixture environmentFixture)
+        public Hooks(IObjectContainer objectContainer, EnvironmentFixture environmentFixture, ScenarioContext scenarioContext)
         {
             _objectContainer = objectContainer;
-            // _scenarioContext = scenarioContext;
+            _scenarioContext = scenarioContext;
             _environmentFixture = environmentFixture;
             _browserHelper = new BrowserHelper(_environmentFixture);
 
@@ -33,13 +33,14 @@ namespace YaleApplianceUITests
         public void BeforeScenario()
         {
             _objectContainer.RegisterInstanceAs<WebDriverContext>(_webDriverContext);
+
         }
 
 
         [BeforeTestRun]
         public static void RunBeforeAllTests()
         {
-            _webDriverContext = new WebDriverContext(_environmentFixture);
+            _webDriverContext = new WebDriverContext();
         }
 
 

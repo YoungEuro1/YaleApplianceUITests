@@ -9,11 +9,15 @@
 
   <ItemGroup>
     <None Remove="Drivers\chromedriver.exe" />
+    <None Remove="Drivers\msedgedriver.exe" />
     <None Remove="EnvironmentData.json" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="Drivers\chromedriver.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Drivers\msedgedriver.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
