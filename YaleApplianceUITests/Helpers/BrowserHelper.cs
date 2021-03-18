@@ -27,8 +27,6 @@ namespace YaleApplianceUITests.Helpers
             {
                 case "chrome":
                     return new ChromeWebDriver();
-                case "firefox":
-                    return new FireFoxWebDriver();
                 case "edge":
                     return new EdgeWebDriver();
                 default:
@@ -37,4 +35,5 @@ namespace YaleApplianceUITests.Helpers
             }
         }
     }
+
 }

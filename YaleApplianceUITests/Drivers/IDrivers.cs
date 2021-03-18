@@ -4,6 +4,6 @@ namespace YaleApplianceUITests.Drivers
 {
     public class IDrivers
     {
-        IWebDriver Driver { get; set; }
+        public IWebDriver Driver { get; set; }
     }
 }

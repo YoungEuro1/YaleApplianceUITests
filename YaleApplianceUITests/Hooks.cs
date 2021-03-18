@@ -1,5 +1,4 @@
 ﻿using BoDi;
-using OpenQA.Selenium.Support.UI;
 using TechTalk.SpecFlow;
 using YaleApplianceUITests.Factories;
 using YaleApplianceUITests.Fixtures;
@@ -15,7 +14,6 @@ namespace YaleApplianceUITests
         private readonly IObjectContainer _objectContainer;
         // private readonly ScenarioContext _scenarioContext;
         private static EnvironmentFixture _environmentFixture;
-        private static WebDriverWait _wait;
         private static WebDriverContext _webDriverContext;
         private static BrowserHelper _browserHelper;
 
@@ -41,7 +39,7 @@ namespace YaleApplianceUITests
         [BeforeTestRun]
         public static void RunBeforeAllTests()
         {
-            _webDriverContext = new WebDriverContext();
+            _webDriverContext = new WebDriverContext(_environmentFixture);
         }
 
 

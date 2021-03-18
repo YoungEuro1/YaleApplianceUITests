@@ -10,18 +10,23 @@ namespace YaleApplianceUITests.Steps.Checkout
         
         private readonly ScenarioContext _scenarioContext;
         private readonly CheckoutPage _checkoutPage;
+        private readonly PaymentPage _paymentPage;
+        private readonly OrderConfirmationPage _orderConfirmationPage;
 
-        public CheckoutSteps(ScenarioContext scenarioContext, CheckoutPage checkoutPage)
+
+
+        public CheckoutSteps(ScenarioContext scenarioContext, CheckoutPage checkoutPage, PaymentPage paymentPage, OrderConfirmationPage orderConfirmationPage)
         {
             _scenarioContext = scenarioContext;
             _checkoutPage = checkoutPage;
+            _paymentPage = paymentPage;
+            _orderConfirmationPage = orderConfirmationPage;
         }
 
         [Given(@"User is on a product page")]
         public void GivenUserIsOnAProductPage()
         {
-           // ScenarioContext.Current.Pending();
-           _checkoutPage.GoToCheckoutPage();
+            _checkoutPage.GoToCheckoutPage();
         }
 
         [Given(@"Product is added to cart")]
@@ -33,31 +38,33 @@ namespace YaleApplianceUITests.Steps.Checkout
         [Given(@"Delivery details are added")]
         public void GivenDeliveryDetailsAreAdded()
         {
-           // ScenarioContext.Current.Pending();
+            _checkoutPage.ChooseProfessionalDelivery();
         }
 
-        [Given(@"Billing details visa are added")]
-        public void GivenBillingDetailsVisaAreAdded()
+
+        [Given(@"Billing details are added")]
+        public void GivenBillingDetailsAreAdded()
         {
-            //ScenarioContext.Current.Pending();
+            _paymentPage.EnterBillingAddress();
         }
 
-        [Given(@"Payment detils are added")]
-        public void GivenPaymentDetilsAreAdded()
+        [Given(@"Payment details are added '(.*)'")]
+        public void GivenPaymentDetailsAreAdded(string paymentType)
         {
-            //ScenarioContext.Current.Pending();
+            _paymentPage.PaymentMethodHelper(paymentType);
         }
+
 
         [When(@"Placing Order")]
         public void WhenPlacingOrder()
         {
-            //ScenarioContext.Current.Pending();
+            _paymentPage.PlaceOrder();
         }
 
-        [Then(@"Order should be placed sucessfully")]
-        public void ThenOrderShouldBePlacedSucessfully()
+        [Then(@"Order should be placed successfully")]
+        public void ThenOrderShouldBePlacedSuccessfully()
         {
-           // ScenarioContext.Current.Pending();
+            _orderConfirmationPage.OrderConfirmationMessage();
         }
 
     }

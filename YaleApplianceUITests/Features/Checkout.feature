@@ -9,14 +9,14 @@ Scenario Outline: Place an Order
 	Given User is on a product page
 	And   Product is added to cart
 	And   Delivery details are added
-	And   Billing details <paymenttype> are added
-	And   Payment detils are added
+	And   Billing details are added
+	And   Payment details are added '<paymenttype>'
 	When  Placing Order
-	Then  Order should be placed sucessfully
+	Then  Order should be placed successfully
 	Examples: 
 	| paymenttype      |
-	| visa             |
-	| mastercard       |
-	| american express |
-	| yale card        |
-	| discouver        |
+	| Visa             |
+	| Mastercard       |
+	| American Express |
+	| Yale Card        |
+	| Discover        |

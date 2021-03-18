@@ -18,7 +18,7 @@
         "Email": "testing@venuiti.com",
         "State": "Massachusetts",
         "City": "Boston",
-        "StreetAddress": "123 Testing Lane"
+        "Address": "123 Testing Lane"
       }
     }
   ]

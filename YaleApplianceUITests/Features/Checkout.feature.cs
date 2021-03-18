@@ -77,11 +77,11 @@ namespace YaleApplianceUITests.Features
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Place an Order")]
         [NUnit.Framework.CategoryAttribute("checkout")]
-        [NUnit.Framework.TestCaseAttribute("visa", null)]
-        [NUnit.Framework.TestCaseAttribute("mastercard", null)]
-        [NUnit.Framework.TestCaseAttribute("american express", null)]
-        [NUnit.Framework.TestCaseAttribute("yale card", null)]
-        [NUnit.Framework.TestCaseAttribute("discouver", null)]
+        [NUnit.Framework.TestCaseAttribute("Visa", null)]
+        [NUnit.Framework.TestCaseAttribute("Mastercard", null)]
+        [NUnit.Framework.TestCaseAttribute("American Express", null)]
+        [NUnit.Framework.TestCaseAttribute("Yale Card", null)]
+        [NUnit.Framework.TestCaseAttribute("Discover", null)]
         public virtual void PlaceAnOrder(string paymenttype, string[] exampleTags)
         {
             string[] @__tags = new string[] {
@@ -124,16 +124,16 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.And("Delivery details are added", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 12
- testRunner.And(string.Format("Billing details {0} are added", paymenttype), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Billing details are added", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 13
- testRunner.And("Payment detils are added", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And(string.Format("Payment details are added \'{0}\'", paymenttype), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 14
  testRunner.When("Placing Order", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 15
- testRunner.Then("Order should be placed sucessfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("Order should be placed successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
