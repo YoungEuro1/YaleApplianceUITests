@@ -65,7 +65,8 @@ namespace YaleApplianceUITests.Factories
          #endregion
 
          private WebDriverContext SwitchToBrowser(string browser)
-        {
+         {
+            Environment.GetEnvironmentVariable("browser", EnvironmentVariableTarget.Process);
             browser = EnvironmentFixture.Environment.Browser;
             switch (browser.ToLower())
             {

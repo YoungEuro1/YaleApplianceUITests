@@ -6,7 +6,7 @@ namespace YaleApplianceUITests.Steps
     {
         protected static EnvironmentFixture EnvironmentFixture;
 
-        public BaseSteps()
+        protected BaseSteps()
         {
             EnvironmentFixture = new EnvironmentFixture();
 
