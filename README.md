@@ -12,16 +12,16 @@ require project to be built in .NetCore.
 
 Browser Configuration
 
-In the EnvironmentData.Json file set browser configuration of choice 'Chrome' or 'Edge' before runing tests 
+In the EnvironmentData.Json file, set browser configuration of choice 'Chrome' or 'Edge' before runing tests locally 
 
 
 Local Configuration
 
-Edge driver version is 89.0.774.54 ensure your local edge browser is compatible with this driver version (if running tests locally).
+Edge driver version is 89.0.774.54, ensure your local edge browser is compatible with this driver version (if running tests locally).
 https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/
 
 
-Chrome driver version is 89 which supports all Chrome browser version 89 - ensure your local version is compatiable if running test locally 
+Chrome driver version is 89 which supports all Chrome browser 89 versions - ensure your local version is compatiable if running test locally 
 http://chromedriver.chromium.org/downloads?
 
 
