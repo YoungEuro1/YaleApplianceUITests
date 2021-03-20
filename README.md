@@ -39,6 +39,6 @@ Build agents may need some provisisoning to ensure that browsers are compatiable
 
 Note : currently only chrome and edge is supported as im working on a windows machine. If you would like tests to run against all platforms agnostically 
 i.e (windows/mac supported browsers) I can integrate the test framework to run remotely on a cloud hosted platform whereby you can choose browser and O/S of your choice and. 
-The cloud hosted automated platforms is a paid subscription service which will require you setting up a subscription plan with the provider if you choose to go down this route. 
+The cloud hosted automated platforms is a paid subscription service which will require a subscription plan with the provider if you choose to go down this route. 
 
 
