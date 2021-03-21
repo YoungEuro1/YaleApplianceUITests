@@ -35,7 +35,7 @@ namespace YaleApplianceUITests.Fixtures
                 {
                     var message = $"Could not find configuration for Environment:{environmentName}." +
                                   " \nPlease check the EnvironmentData.Json file in the solution to select a valid environment." +
-                                  " \nPlease set a valid enviroment in the app.config.";
+                                  " \nPlease set a valid environment in the environment data json.";
                     // var exception = new CouldNotFindValidEnvironmentConfigurationException(message);
                     //throw exception;
                 }
