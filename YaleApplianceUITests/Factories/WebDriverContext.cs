@@ -26,7 +26,7 @@ namespace YaleApplianceUITests.Factories
         {
 
             var options = new ChromeOptions();
-            options.AddArgument("--incognito");
+           // options.AddArgument("--incognito");
             options.AddArgument("--start-maximized");
             options.AddArgument("--lang=en");
             options.AddArgument("--ignore-certificate-errors");
@@ -40,7 +40,7 @@ namespace YaleApplianceUITests.Factories
             var uri = new UriBuilder(codeBase);
             var path = Uri.UnescapeDataString(uri.Path);
             var directoryPath = Path.GetDirectoryName(path);
-            this.Driver = new ChromeDriver(directoryPath + "\\drivers", options);
+            this.Driver = new ChromeDriver(directoryPath + "\\drivers", options, TimeSpan.FromSeconds(60));
             return this;
         }
 

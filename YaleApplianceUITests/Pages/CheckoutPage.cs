@@ -14,39 +14,49 @@ namespace YaleApplianceUITests.Pages
     public class CheckoutPage
     {
         private readonly EnvironmentFixture _environmentFixture;
-        private readonly WebDriverContext _webDriverContext;
-        private readonly IWebActions _webActions;
+        private static WebDriverContext _webDriverContext;
+        private static IWebActions _webActions;
         private WebDriverWait _wait;
-        
+
 
         public CheckoutPage(WebDriverContext webDriverContext, EnvironmentFixture environmentFixture)
         {
             _environmentFixture = environmentFixture;
             _webDriverContext = webDriverContext;
             _webActions = new WebActions(_webDriverContext);
-            _wait = new WebDriverWait(_webDriverContext.Driver,TimeSpan.FromSeconds(10));
+            _wait = new WebDriverWait(_webDriverContext.Driver, TimeSpan.FromSeconds(10));
         }
 
         #region Locator
 
-        private readonly By _getItNowBtn = By.Id("NormalCheckout");
+        private static readonly By _getItNowBtn = By.Id("NormalCheckout");
 
         private readonly By _zipCodeTxt = By.ClassName("zip-code__input");
 
         private readonly By _zipCodeSubmitBtn = By.CssSelector("#zip-code-form > div.zip-code__submitblock > div");
 
-        private const string ChooseProfessionalDeliveryBtnClick = "document.querySelector(\"#delivery-methods > div > label:nth-child(3) > div > div.deliveryItem_header > div > input[type=radio]\").click()";
+
+        private const string ChooseProfessionalDeliveryBtnClick =
+            "document.querySelector(\"#delivery-methods > div > label:nth-child(3) > div > div.deliveryItem_header > div > input[type=radio]\").click()";
+
+        private readonly By _popUp = By.CssSelector("#bakersfield-ButtonElement--9V7TsM2j7LkTgGSHPmpL");
+
+        private static readonly By _closePopUp = By.CssSelector("#om-z3df03lhtmhoa1j1vtdj-optin > div > button > svg > path");
+
+        private IWebElement PopUP => _webDriverContext.Driver.FindElement(_popUp);
+
+        private static IWebElement ClosePopUP => _webDriverContext.Driver.FindElement(_closePopUp);
 
 
         #endregion
 
-        public IWebElement GetItNowBtn => _webDriverContext.Driver.FindElement(_getItNowBtn);
+        public static IWebElement GetItNowBtn => _webDriverContext.Driver.FindElement(_getItNowBtn);
 
         public IWebElement ZipCodeTxt => _webDriverContext.Driver.FindElement(_zipCodeTxt);
 
         public IWebElement ZipCodeSubmitBtn => _webDriverContext.Driver.FindElement(_zipCodeSubmitBtn);
 
-        
+
 
         public CheckoutPage GoToCheckoutPage()
         {
@@ -56,27 +66,45 @@ namespace YaleApplianceUITests.Pages
 
         public CheckoutPage ClickGetItNowBtn()
         {
-            var enabled = _wait.Until(x => x.FindElement(By.Id("NormalCheckout"))).Enabled;
-
             try
             {
-                if (enabled)
-                {
-                    _webActions.Click(GetItNowBtn);
-                    return this;
-                }
+                //((IJavaScriptExecutor)_webDriverContext.Driver).ExecuteScript("window.scrollTo(0, document.body.scrollHeight - 150");
+                _webActions.MoveTo(_webDriverContext.Driver,GetItNowBtn,GetItNowBtn);
+                WebDriverWait wait = new WebDriverWait(_webDriverContext.Driver, TimeSpan.FromSeconds(60));
+                wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.CssSelector("#bakersfield-ButtonElement--9V7TsM2j7LkTgGSHPmpL")));
+                ClosePopUP.Click();
+                //_webDriverContext.Driver.SwitchTo().Alert().Dismiss();
+                _webActions.Click(GetItNowBtn);
+                return this;
 
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                Console.WriteLine(e.Message);
             }
-            
+
             return this;
         }
 
+        //    //var dismiss = _webDriverContext.Driver.SwitchTo().Alert();
+        //    // dismiss.Dismiss();
+        //    var enabled = _wait.Until(x => x.FindElement(By.Id("NormalCheckout"))).Enabled;
+        //    if (enabled.Equals(true))
+        //    {
+        //        _webActions.Click(GetItNowBtn);
+        //    }
+        //    else
+        //    {
+        //        Console.WriteLine("element not found");
+        //    }
 
-        public void ChooseProfessionalDelivery()
+        //    return this;
+        //}
+
+
+
+
+            public void ChooseProfessionalDelivery()
         {
 
             Thread.Sleep(TimeSpan.FromSeconds(3));

@@ -1,4 +1,6 @@
 ﻿using BoDi;
+using NUnit.Framework;
+using OpenQA.Selenium;
 using TechTalk.SpecFlow;
 using YaleApplianceUITests.Factories;
 using YaleApplianceUITests.Fixtures;
@@ -10,7 +12,7 @@ namespace YaleApplianceUITests
     public sealed class Hooks
     {
         
-        private readonly IObjectContainer _objectContainer;
+        private static IObjectContainer _objectContainer;
         private static  ScenarioContext _scenarioContext;
         private static EnvironmentFixture _environmentFixture;
         private static WebDriverContext _webDriverContext;
@@ -28,8 +30,8 @@ namespace YaleApplianceUITests
         [BeforeScenario]
         public void BeforeScenario()
         {
-            _objectContainer.RegisterInstanceAs<WebDriverContext>(_webDriverContext);
-
+            _objectContainer.RegisterInstanceAs<WebDriverContext>(_webDriverContext,"",true);
+            
         }
 
 
@@ -41,13 +43,15 @@ namespace YaleApplianceUITests
 
 
 
-        [AfterScenario]
-        public void AfterScenario()
+        [AfterScenario()]
+        public static void AfterScenario()
         {
             var driver = _objectContainer.Resolve<WebDriverContext>();
+            driver?.Driver.Close();
             driver?.Driver.Quit();
             driver?.Driver.Dispose();
         }
+
 
     }
 }
