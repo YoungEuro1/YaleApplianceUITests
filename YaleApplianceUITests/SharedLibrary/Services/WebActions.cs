@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Internal;
 using OpenQA.Selenium.Support.UI;
+using YaleApplianceUITests.Factories;
 using YaleApplianceUITests.SharedLibrary.Extensions;
 using YaleApplianceUITests.SharedLibrary.Interfaces;
 
@@ -10,6 +11,16 @@ namespace YaleApplianceUITests.SharedLibrary.Services
 {
     public class WebActions : IWebActions
     {
+
+        private IWebDriver Driver { get; set; }
+
+        
+        public WebActions(WebDriverContext webDriverContext)
+        {
+            Driver = webDriverContext.Driver;
+        }
+
+
         public void Click(IWebElement element)
         {
             var wait = new WebDriverWait(((IWrapsDriver) element).WrappedDriver, TimeSpan.FromSeconds(10));

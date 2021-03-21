@@ -25,7 +25,7 @@ namespace YaleApplianceUITests.Pages
         {
             _environmentFixture = environmentFixture;
             _webDriverContext = webDriverContext;
-            _webActions = new WebActions();
+            _webActions = new WebActions(_webDriverContext);
             _wait = new WebDriverWait(_webDriverContext.Driver, TimeSpan.FromSeconds(10));
         }
 

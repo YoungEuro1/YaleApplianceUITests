@@ -13,7 +13,7 @@ namespace YaleApplianceUITests.Pages
     public class OrderConfirmationPage
     {
         private readonly EnvironmentFixture _environmentFixture;
-        private readonly WebDriverContext _browserHelper;
+        private readonly WebDriverContext _webDriverContext;
         private readonly IWebActions _webActions;
         private readonly WebDriverWait _wait;
         private readonly ScenarioContext _scenarioContext;
@@ -21,9 +21,9 @@ namespace YaleApplianceUITests.Pages
         public OrderConfirmationPage(WebDriverContext webDriverContext, EnvironmentFixture environmentFixture)
         {
             _environmentFixture = environmentFixture;
-            _browserHelper = webDriverContext;
-            _webActions = new WebActions();
-            _wait = new WebDriverWait(_browserHelper.Driver, TimeSpan.FromSeconds(10));
+            _webDriverContext = webDriverContext;
+            _webActions = new WebActions(_webDriverContext);
+            _wait = new WebDriverWait(_webDriverContext.Driver, TimeSpan.FromSeconds(10));
 
         }
 
@@ -34,14 +34,14 @@ namespace YaleApplianceUITests.Pages
         #endregion
 
 
-        public IWebElement OrderConfirmationMsg => _browserHelper.Driver.FindElement(_orderConfirmationMsg);
+        public IWebElement OrderConfirmationMsg => _webDriverContext.Driver.FindElement(_orderConfirmationMsg);
 
 
 
         public OrderConfirmationPage OrderConfirmationMessage()
         {
             Assert.That(OrderConfirmationMsg.Displayed.Equals(true));
-            Assert.That(_browserHelper.Driver.Url.Contains("https://www.yaleappliance.com/shopping-cart/thank-you"));
+            Assert.That(_webDriverContext.Driver.Url.Contains("https://www.yaleappliance.com/shopping-cart/thank-you"));
             return this;
         }
     }
