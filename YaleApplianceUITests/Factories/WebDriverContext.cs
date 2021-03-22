@@ -1,14 +1,17 @@
 ﻿using System;
 using System.IO;
 using System.Reflection;
+using System.Security.Cryptography.X509Certificates;
 using Microsoft.Edge.SeleniumTools;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using TechTalk.SpecFlow;
 using YaleApplianceUITests.Steps;
 
 
 namespace YaleApplianceUITests.Factories
 {
+    [Binding]
  
     public class WebDriverContext:BaseSteps
     {
@@ -66,23 +69,23 @@ namespace YaleApplianceUITests.Factories
 
          private WebDriverContext SwitchToBrowser(string browser)
          {
-            Environment.GetEnvironmentVariable("browser", EnvironmentVariableTarget.Process);
-            browser = EnvironmentFixture.Environment.Browser;
-            switch (browser.ToLower())
-            {
-                case "chrome":
-                    return  Chrome();
-                case "edge":
-                    return Edge();
-                default:
-                    throw new Exception(
-                        $"{browser} browser name is not supported in this test framework");
-
-            }
-        }
+             Environment.GetEnvironmentVariable("browser", EnvironmentVariableTarget.Process);
+             browser = EnvironmentFixture.Environment.Browser;
+             switch (browser.ToLower())
+             {
+                 case "chrome":
+                     return Chrome();
+                 case "edge":
+                     return Edge();
+                 default:
+                     throw new Exception(
+                         $"{browser} browser name is not supported in this test framework");
+             }
+         }
     }
-
 }
+
+
 
 
 

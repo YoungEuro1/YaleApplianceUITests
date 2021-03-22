@@ -1,6 +1,7 @@
-﻿using BoDi;
-using NUnit.Framework;
-using OpenQA.Selenium;
+﻿using System;
+using System.Diagnostics;
+using System.Threading;
+using BoDi;
 using TechTalk.SpecFlow;
 using YaleApplianceUITests.Factories;
 using YaleApplianceUITests.Fixtures;
@@ -53,5 +54,15 @@ namespace YaleApplianceUITests
         }
 
 
+        [AfterTestRun()]
+        public static void KillProcoess()
+        {
+            String taskKill = "taskkill.exe";
+            string chrome = "/F /IM chrome.exe*";
+            string edge = "/F /IM  msedge.exe*";
+            Process.Start(taskKill, chrome);
+            Process.Start(taskKill, edge);
+            Thread.Sleep(5000); //Allow OS to kill the process 
+        }
     }
 }
