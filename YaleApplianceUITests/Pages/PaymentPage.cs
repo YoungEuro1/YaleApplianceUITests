@@ -29,7 +29,7 @@ namespace YaleApplianceUITests.Pages
             _wait = new WebDriverWait(_webDriverContext.Driver, TimeSpan.FromSeconds(10));
         }
 
-        #region Locator
+        #region Locators
 
         private readonly By _firstName = By.CssSelector("#CheckoutViewModel_BillingAddress_FirstName");
         private readonly By _lastName = By.CssSelector("#CheckoutViewModel_BillingAddress_LastName");

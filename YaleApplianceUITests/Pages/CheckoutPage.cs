@@ -27,7 +27,7 @@ namespace YaleApplianceUITests.Pages
             _wait = new WebDriverWait(_webDriverContext.Driver, TimeSpan.FromSeconds(10));
         }
 
-        #region Locator
+        #region Locators
 
         private static readonly By _getItNowBtn = By.Id("NormalCheckout");
 
@@ -73,7 +73,6 @@ namespace YaleApplianceUITests.Pages
                 WebDriverWait wait = new WebDriverWait(_webDriverContext.Driver, TimeSpan.FromSeconds(60));
                 wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.CssSelector("#bakersfield-ButtonElement--9V7TsM2j7LkTgGSHPmpL")));
                 ClosePopUP.Click();
-                //_webDriverContext.Driver.SwitchTo().Alert().Dismiss();
                 _webActions.Click(GetItNowBtn);
                 return this;
 
@@ -86,24 +85,7 @@ namespace YaleApplianceUITests.Pages
             return this;
         }
 
-        //    //var dismiss = _webDriverContext.Driver.SwitchTo().Alert();
-        //    // dismiss.Dismiss();
-        //    var enabled = _wait.Until(x => x.FindElement(By.Id("NormalCheckout"))).Enabled;
-        //    if (enabled.Equals(true))
-        //    {
-        //        _webActions.Click(GetItNowBtn);
-        //    }
-        //    else
-        //    {
-        //        Console.WriteLine("element not found");
-        //    }
-
-        //    return this;
-        //}
-
-
-
-
+        
             public void ChooseProfessionalDelivery()
         {
 

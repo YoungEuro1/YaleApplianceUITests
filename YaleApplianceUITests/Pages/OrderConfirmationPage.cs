@@ -27,7 +27,7 @@ namespace YaleApplianceUITests.Pages
 
         }
 
-        #region Locator
+        #region Locators
 
         private readonly By _orderConfirmationMsg = By.CssSelector("body > div.main-wrapper > div > div.cart > div > div > div.page-thanks__mainTitle");
 
