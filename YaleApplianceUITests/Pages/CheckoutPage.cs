@@ -89,8 +89,7 @@ namespace YaleApplianceUITests.Pages
                     _webActions.Click(GetItNowBtn);
                     return this;
                 }
-                // wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.CssSelector("#bakersfield-ButtonElement--9V7TsM2j7LkTgGSHPmpL")));
-
+                
             }
             catch (Exception e)
             {
