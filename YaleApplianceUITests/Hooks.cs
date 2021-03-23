@@ -31,7 +31,7 @@ namespace YaleApplianceUITests
         [BeforeScenario]
         public void BeforeScenario()
         {
-            _objectContainer.RegisterInstanceAs<WebDriverContext>(_webDriverContext,"",true);
+            _objectContainer.RegisterInstanceAs<WebDriverContext>(_webDriverContext);
             
         }
 
@@ -49,7 +49,6 @@ namespace YaleApplianceUITests
         {
             var driver = _objectContainer.Resolve<WebDriverContext>();
             driver?.Driver.Close();
-            driver?.Driver.Quit();
             driver?.Driver.Dispose();
         }
 

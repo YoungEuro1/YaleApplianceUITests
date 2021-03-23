@@ -10,6 +10,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Internal;
 using OpenQA.Selenium.Support.UI;
+using YaleApplianceUITests.Factories;
 
 namespace YaleApplianceUITests.SharedLibrary.Extensions
 {
@@ -66,12 +67,7 @@ namespace YaleApplianceUITests.SharedLibrary.Extensions
             }
         }
 
-        public static void Execute(this IWebDriver driver, string script)
-        {
-            Task.Delay(1000).Wait();
-            ((IJavaScriptExecutor)driver).ExecuteScript(script);
-        }
-
+   
         public static IWebElement FindElementByJs(this IWebDriver driver, string jsCommand)
         {
             return (IWebElement)((IJavaScriptExecutor)driver).ExecuteScript(jsCommand);
