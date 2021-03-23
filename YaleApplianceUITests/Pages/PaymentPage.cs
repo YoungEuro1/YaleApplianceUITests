@@ -126,8 +126,10 @@ namespace YaleApplianceUITests.Pages
       public PaymentPage EnterPaymentDetails(string paymentType)
       { 
           Thread.Sleep(TimeSpan.FromSeconds(3));
-          _webActions.WaitForPresenceOfElementLocatedBy(CardholderName, _cardholderName); 
-          CardholderName.SendKeys(_environmentFixture.Environment.User.FirstName); 
+          WebDriverWait wait = new WebDriverWait(_webDriverContext.Driver, TimeSpan.FromSeconds(60));
+            _webActions.WaitForPresenceOfElementLocatedBy(CardholderName, _cardholderName); 
+          CardholderName.SendKeys(_environmentFixture.Environment.User.FirstName);
+          wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.CssSelector("#CheckoutViewModel_CardInfo_CardProvider")));
           PaymentType.SendKeys(paymentType); 
           ExpiryDate.SendKeys("2023"); 
           CardNumber.SendKeys("4444333322221111"); 

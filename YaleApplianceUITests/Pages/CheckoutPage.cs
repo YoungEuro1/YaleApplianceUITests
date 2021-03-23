@@ -43,6 +43,8 @@ namespace YaleApplianceUITests.Pages
 
         private static readonly By _closePopUp = By.CssSelector("#om-z3df03lhtmhoa1j1vtdj-optin > div > button > svg > path");
 
+        private static readonly By  _PopUpBtn = By.CssSelector("#bakersfield-ButtonElement--9V7TsM2j7LkTgGSHPmpL");
+
         private IWebElement PopUP => _webDriverContext.Driver.FindElement(_popUp);
 
         private static IWebElement ClosePopUP => _webDriverContext.Driver.FindElement(_closePopUp);
@@ -55,6 +57,8 @@ namespace YaleApplianceUITests.Pages
         public IWebElement ZipCodeTxt => _webDriverContext.Driver.FindElement(_zipCodeTxt);
 
         public IWebElement ZipCodeSubmitBtn => _webDriverContext.Driver.FindElement(_zipCodeSubmitBtn);
+
+        public IWebElement PopUpBtn => _webDriverContext.Driver.FindElement(_PopUpBtn);
 
 
 
@@ -71,10 +75,21 @@ namespace YaleApplianceUITests.Pages
                 //((IJavaScriptExecutor)_webDriverContext.Driver).ExecuteScript("window.scrollTo(0, document.body.scrollHeight - 150");
                 _webActions.MoveTo(_webDriverContext.Driver,GetItNowBtn,GetItNowBtn);
                 WebDriverWait wait = new WebDriverWait(_webDriverContext.Driver, TimeSpan.FromSeconds(60));
-                wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.CssSelector("#bakersfield-ButtonElement--9V7TsM2j7LkTgGSHPmpL")));
-                ClosePopUP.Click();
-                _webActions.Click(GetItNowBtn);
-                return this;
+
+                {
+                    if (PopUpBtn.Enabled)
+                    {
+                        wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.CssSelector("#bakersfield-ButtonElement--9V7TsM2j7LkTgGSHPmpL")));
+                        ClosePopUP.Click();
+                        _webActions.Click(GetItNowBtn);
+                        return this;
+                    }
+
+                    ClosePopUP.Click();
+                    _webActions.Click(GetItNowBtn);
+                    return this;
+                }
+                // wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.CssSelector("#bakersfield-ButtonElement--9V7TsM2j7LkTgGSHPmpL")));
 
             }
             catch (Exception e)
@@ -90,7 +105,9 @@ namespace YaleApplianceUITests.Pages
         {
 
             Thread.Sleep(TimeSpan.FromSeconds(3));
+            WebDriverWait wait = new WebDriverWait(_webDriverContext.Driver, TimeSpan.FromSeconds(60));
             _webDriverContext.Driver.ExecuteJavaScript(ChooseProfessionalDeliveryBtnClick);
+            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.CssSelector("#zip-code-form > div.zip-code__submitblock > div > input")));
 
             try
             {
