@@ -29,7 +29,7 @@ namespace YaleApplianceUITests.Factories
         {
 
             var options = new ChromeOptions();
-           // options.AddArgument("--incognito");
+            options.AddArgument("--incognito");
             options.AddArgument("--start-maximized");
             options.AddArgument("--lang=en");
             options.AddArgument("--ignore-certificate-errors");
