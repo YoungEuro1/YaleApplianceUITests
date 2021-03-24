@@ -53,9 +53,12 @@ namespace YaleApplianceUITests
         }
 
 
-        [AfterTestRun()]
-        public static void KillProcoess()
+ 
+
+        [AfterTestRun(Order = 0)]
+        private static void KillProcess()
         {
+
             String taskKill = "taskkill.exe";
             string chrome = "/F /IM chrome.exe*";
             string edge = "/F /IM  msedge.exe*";
@@ -63,5 +66,7 @@ namespace YaleApplianceUITests
             Process.Start(taskKill, edge);
             Thread.Sleep(5000); //Allow OS to kill the process 
         }
+
+
     }
 }

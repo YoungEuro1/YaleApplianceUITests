@@ -70,60 +70,59 @@ namespace YaleApplianceUITests.Pages
 
         public CheckoutPage ClickGetItNowBtn()
         {
+
+            //((IJavaScriptExecutor)_webDriverContext.Driver).ExecuteScript("window.scrollTo(0, document.body.scrollHeight - 150");
+          
+            WebDriverWait wait = new WebDriverWait(_webDriverContext.Driver, TimeSpan.FromSeconds(60));
             try
             {
-                //((IJavaScriptExecutor)_webDriverContext.Driver).ExecuteScript("window.scrollTo(0, document.body.scrollHeight - 150");
-                _webActions.MoveTo(_webDriverContext.Driver,GetItNowBtn,GetItNowBtn);
-                WebDriverWait wait = new WebDriverWait(_webDriverContext.Driver, TimeSpan.FromSeconds(60));
-
-                {
-                    if (PopUpBtn.Enabled)
-                    {
-                        wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.CssSelector("#bakersfield-ButtonElement--9V7TsM2j7LkTgGSHPmpL")));
-                        ClosePopUP.Click();
-                        _webActions.Click(GetItNowBtn);
-                        return this;
-                    }
-
-                    ClosePopUP.Click();
-                    _webActions.Click(GetItNowBtn);
-                    return this;
-                }
-                
+                ClosePopUP.Click();
+                _webActions.MoveTo(_webDriverContext.Driver, GetItNowBtn, GetItNowBtn);
+                _webActions.Click(GetItNowBtn);
+                return this;
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                {
+                    _webActions.MoveTo(_webDriverContext.Driver, GetItNowBtn, GetItNowBtn);
+                    _webActions.Click(GetItNowBtn);
+                }
             }
 
             return this;
         }
 
-        
-            public void ChooseProfessionalDelivery()
-        {
 
-            Thread.Sleep(TimeSpan.FromSeconds(3));
-            WebDriverWait wait = new WebDriverWait(_webDriverContext.Driver, TimeSpan.FromSeconds(60));
-            _webDriverContext.Driver.ExecuteJavaScript(ChooseProfessionalDeliveryBtnClick);
-            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.CssSelector("#zip-code-form > div.zip-code__submitblock > div > input")));
-
-            try
-            {
-                if (ZipCodeTxt.Displayed)
+        public CheckoutPage ChooseProfessionalDelivery()
                 {
-                    ZipCodeTxt.SendKeys("02122");
-                    ZipCodeSubmitBtn.Click();
+
+                    Thread.Sleep(TimeSpan.FromSeconds(3));
+                    WebDriverWait wait = new WebDriverWait(_webDriverContext.Driver, TimeSpan.FromSeconds(60));
+
+                    try
+                    {
+                        ClosePopUP.Click();
+                        wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.CssSelector("#delivery-methods > div > label:nth-child(3) > div > div.deliveryItem_header > div > input[type=radio]")));
+                        _webDriverContext.Driver.ExecuteJavaScript(ChooseProfessionalDeliveryBtnClick);
+                        wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.CssSelector("#zip-code-form > div.zip-code__submitblock > div > input")));
+                        ZipCodeTxt.SendKeys("02122");
+                        ZipCodeSubmitBtn.Click();
+                        return this;
+                    }
+                    
+                    catch(Exception e)
+
+                    {
+                        wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.CssSelector("#delivery-methods > div > label:nth-child(3) > div > div.deliveryItem_header > div > input[type=radio]")));
+                        _webDriverContext.Driver.ExecuteJavaScript(ChooseProfessionalDeliveryBtnClick);
+                        wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.CssSelector("#zip-code-form > div.zip-code__submitblock > div > input")));
+                        ZipCodeTxt.SendKeys("02122");
+                        ZipCodeSubmitBtn.Click();
+                    }
+
+                    return this;
                 }
             }
-
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-
-        }
-    }
 
 }
    
