@@ -14,7 +14,7 @@ namespace YaleApplianceUITests.Pages
     public class CheckoutPage
     {
         private readonly EnvironmentFixture _environmentFixture;
-        private static WebDriverContext _webDriverContext;
+        private readonly WebDriverContext _webDriverContext;
         private static IWebActions _webActions;
         private WebDriverWait _wait;
 
@@ -43,22 +43,22 @@ namespace YaleApplianceUITests.Pages
 
         private static readonly By _closePopUp = By.CssSelector("#om-z3df03lhtmhoa1j1vtdj-optin > div > button > svg > path");
 
-        private static readonly By  _PopUpBtn = By.CssSelector("#bakersfield-ButtonElement--9V7TsM2j7LkTgGSHPmpL");
+        private static readonly By  _popUpBtn = By.CssSelector("#bakersfield-ButtonElement--9V7TsM2j7LkTgGSHPmpL");
 
         private IWebElement PopUP => _webDriverContext.Driver.FindElement(_popUp);
 
-        private static IWebElement ClosePopUP => _webDriverContext.Driver.FindElement(_closePopUp);
+        private IWebElement ClosePopUP => _webDriverContext.Driver.FindElement(_closePopUp);
 
 
         #endregion
 
-        public static IWebElement GetItNowBtn => _webDriverContext.Driver.FindElement(_getItNowBtn);
+        private IWebElement GetItNowBtn => _webDriverContext.Driver.FindElement(_getItNowBtn);
 
-        public IWebElement ZipCodeTxt => _webDriverContext.Driver.FindElement(_zipCodeTxt);
+        private IWebElement ZipCodeTxt => _webDriverContext.Driver.FindElement(_zipCodeTxt);
 
-        public IWebElement ZipCodeSubmitBtn => _webDriverContext.Driver.FindElement(_zipCodeSubmitBtn);
+        private IWebElement ZipCodeSubmitBtn => _webDriverContext.Driver.FindElement(_zipCodeSubmitBtn);
 
-        public IWebElement PopUpBtn => _webDriverContext.Driver.FindElement(_PopUpBtn);
+        private IWebElement PopUpBtn => _webDriverContext.Driver.FindElement(_popUpBtn);
 
 
 
