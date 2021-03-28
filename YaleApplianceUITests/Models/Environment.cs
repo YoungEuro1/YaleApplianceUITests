@@ -8,6 +8,10 @@
 
         public string CheckoutUrl { get; set; }
 
+        public string DishwasherPageUrl { get; set; }
+
+        public string RefrigeratorPageUrl { get; set; }
+
         public User User { get; set; }
 
     }

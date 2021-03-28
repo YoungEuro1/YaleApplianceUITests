@@ -1,11 +1,8 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=1d862f59_002D0793_002D49ad_002D8e52_002Dd27ffddfe05d/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="PlaceAnOrder(&amp;quot;Visa&amp;quot;,null)" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::7B25D8E3-4F82-42E6-8B26-1CF6BD417417::.NETCoreApp,Version=v3.1::YaleApplianceUITests.Features.CheckoutFeature.PlaceAnOrder&lt;/TestId&gt;&#xD;
-  &lt;/TestAncestor&gt;&#xD;
+  &lt;And&gt;&#xD;
+    &lt;Project Location="C:\Users\Paul Boetang\source\repos\YaleApplianceUITests\YaleApplianceUITests" Presentation="&amp;lt;YaleApplianceUITests&amp;gt;" /&gt;&#xD;
+    &lt;Namespace&gt;YaleApplianceUITests.Features.Checkout&lt;/Namespace&gt;&#xD;
+  &lt;/And&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=543858a0_002D5448_002D4f66_002D814e_002Df8ff8ed2e647/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="PlaceAnOrder(&amp;quot;American Express&amp;quot;,null)" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;NUnit3x::7B25D8E3-4F82-42E6-8B26-1CF6BD417417::.NETCoreApp,Version=v3.1::YaleApplianceUITests.Features.CheckoutFeature&lt;/TestId&gt;&#xD;
-  &lt;/TestAncestor&gt;&#xD;
-&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
+	</wpf:ResourceDictionary>

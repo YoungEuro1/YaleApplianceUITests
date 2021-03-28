@@ -50,6 +50,7 @@ namespace YaleApplianceUITests
             var driver = _objectContainer.Resolve<WebDriverContext>();
             driver?.Driver.Close();
             driver?.Driver.Dispose();
+            driver?.Driver.Quit();
         }
 
 
@@ -61,12 +62,14 @@ namespace YaleApplianceUITests
 
             String taskKill = "taskkill.exe";
             string chrome = "/F /IM chrome.exe*";
+            string chromeDriver = "/F /IM chromedriver.exe*";
+            string msedgeDriver = "/F /IM msedgedriver.exe*";
             string edge = "/F /IM  msedge.exe*";
             Process.Start(taskKill, chrome);
+            Process.Start(taskKill, chromeDriver);
+            Process.Start(taskKill, msedgeDriver);
             Process.Start(taskKill, edge);
             Thread.Sleep(5000); //Allow OS to kill the process 
         }
-
-
     }
 }

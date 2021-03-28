@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
@@ -14,6 +12,7 @@ namespace YaleApplianceUITests.SharedLibrary.Interfaces
         IWebElement WaitForPresenceOfElementLocatedBy(IWebElement element, By locator);
         bool WaitForUrlToContains(IWebDriver driver, string url, WebDriverWait wait);
         void MoveTo(IWebDriver driver, IWebElement source, IWebElement target);
+        void MoveToAndHover(IWebDriver driver, IWebElement source, IWebElement target);
     }
 }
 

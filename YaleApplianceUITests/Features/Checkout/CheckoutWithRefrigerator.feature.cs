@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace YaleApplianceUITests.Features
+namespace YaleApplianceUITests.Features.Checkout
 {
     using TechTalk.SpecFlow;
     using System;
@@ -20,23 +20,30 @@ namespace YaleApplianceUITests.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.7.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("Checkout")]
-    public partial class CheckoutFeature
+    [NUnit.Framework.DescriptionAttribute("CheckoutWithRefrigerator")]
+    [NUnit.Framework.CategoryAttribute("checkout")]
+    [NUnit.Framework.CategoryAttribute("refrigerator")]
+    public partial class CheckoutWithRefrigeratorFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
-        private string[] _featureTags = ((string[])(null));
+        private string[] _featureTags = new string[] {
+                "checkout",
+                "refrigerator"};
         
-#line 1 "Checkout.feature"
+#line 1 "CheckoutWithRefrigerator.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Checkout", "\tUpon landing on a product page \r\n\tAs a customer \r\n\tI should be able to add produ" +
-                    "cts to my cart\r\n\tAnd go through the checkout process successfully. ", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features/Checkout", "CheckoutWithRefrigerator", "\tUpon landing on the refrigerator product page \r\n\tAs a customer \r\n\tI should be ab" +
+                    "le to add a product(s) to my cart\r\n\tAnd select any delivery add ons to my cart\r\n" +
+                    "\tAnd go through the checkout process successfully. ", ProgrammingLanguage.CSharp, new string[] {
+                        "checkout",
+                        "refrigerator"});
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -76,7 +83,6 @@ namespace YaleApplianceUITests.Features
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Place an Order")]
-        [NUnit.Framework.CategoryAttribute("checkout")]
         [NUnit.Framework.TestCaseAttribute("Visa", null)]
         [NUnit.Framework.TestCaseAttribute("Mastercard", null)]
         [NUnit.Framework.TestCaseAttribute("American Express", null)]
@@ -84,17 +90,11 @@ namespace YaleApplianceUITests.Features
         [NUnit.Framework.TestCaseAttribute("Discover", null)]
         public virtual void PlaceAnOrder(string paymenttype, string[] exampleTags)
         {
-            string[] @__tags = new string[] {
-                    "checkout"};
-            if ((exampleTags != null))
-            {
-                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
-            }
-            string[] tagsOfScenario = @__tags;
+            string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("paymenttype", paymenttype);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Place an Order", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 8
+#line 10
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -114,25 +114,25 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 9
- testRunner.Given("User is on a product page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-#line 10
- testRunner.And("Product is added to cart", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
 #line 11
- testRunner.And("Delivery details are added", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Given("User is on a refrigerator page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 12
- testRunner.And("Billing details are added", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Refrigerator is added to cart", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 13
- testRunner.And(string.Format("Payment details are added \'{0}\'", paymenttype), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("Delivery details are added", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 14
- testRunner.When("Placing Order", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And("Billing details are added", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 15
+ testRunner.And(string.Format("Payment details are added \'{0}\'", paymenttype), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 16
+ testRunner.When("Placing Order", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 17
  testRunner.Then("Order should be placed successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
