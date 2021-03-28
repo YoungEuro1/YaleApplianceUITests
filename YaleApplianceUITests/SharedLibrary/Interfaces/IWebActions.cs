@@ -12,7 +12,6 @@ namespace YaleApplianceUITests.SharedLibrary.Interfaces
         IWebElement WaitForPresenceOfElementLocatedBy(IWebElement element, By locator);
         bool WaitForUrlToContains(IWebDriver driver, string url, WebDriverWait wait);
         void MoveTo(IWebDriver driver, IWebElement source, IWebElement target);
-        void MoveToAndHover(IWebDriver driver, IWebElement source, IWebElement target);
     }
 }
 

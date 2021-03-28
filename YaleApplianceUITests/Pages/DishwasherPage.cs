@@ -29,14 +29,16 @@ namespace YaleApplianceUITests.Pages
 
         private readonly By _compactorsBtn = By.CssSelector("body > div.main-wrapper > div > section > div > div.appliances > div:nth-child(2) > a > div");
         private readonly By _dishwasherBtn = By.CssSelector("body > div.main-wrapper > div > section > div > div.appliances > div:nth-child(1) > a > div");
-        private readonly By _dishwasherViewDetailsBtn = By.CssSelector("#products-list-container > div > div:nth-child(8) > div > div.catalogue-item__descr > div.catalogue-item__descr-view > a");
-
+        private readonly By _dishwasherViewDetailsBtn = By.CssSelector("#products-list-container > div > div:nth-child(5) > div > div.catalogue-item__descr > div.catalogue-item__descr-view > a");
+        private readonly By _addToCartBtn = By.Id("NormalCheckout");
         #endregion
 
         private IWebElement CompactorBtn => _webDriverContext.Driver.FindElement(_compactorsBtn);
         private IWebElement DishwasherBtn => _webDriverContext.Driver.FindElement(_dishwasherBtn);
 
         private IWebElement DishwasherViewDetailsBtn => _webDriverContext.Driver.FindElement(_dishwasherViewDetailsBtn);
+
+        private IWebElement AddToCartBtn => _webDriverContext.Driver.FindElement(_addToCartBtn);
 
 
 
@@ -52,6 +54,9 @@ namespace YaleApplianceUITests.Pages
             DishwasherBtn.Click();
             Thread.Sleep(TimeSpan.FromSeconds(3));
             _webActions.MoveTo(_webDriverContext.Driver, DishwasherViewDetailsBtn, DishwasherViewDetailsBtn);
+            _wait.Until(x => x.FindElement(_addToCartBtn).Displayed);
+            ((IJavaScriptExecutor)_webDriverContext.Driver).ExecuteScript("arguments[0].scrollIntoView(true);", AddToCartBtn);
+            AddToCartBtn.Click();
         }
     }
 }

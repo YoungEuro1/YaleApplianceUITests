@@ -60,6 +60,7 @@ namespace YaleApplianceUITests.Steps.Checkout
         public void GivenRefrigeratorIsAddedToCart()
         {
             _refrigeratorPage.ClickAddToCartBtn();
+    
         }
 
 

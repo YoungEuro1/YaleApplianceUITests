@@ -36,11 +36,11 @@ namespace YaleApplianceUITests.Pages
 
         private readonly By _zipCodeSubmitBtn = By.CssSelector("#zip-code-form > div.zip-code__submitblock > div");
 
-        private readonly By _chooseInstallation = By.Id("Product-47180-INST002-YES");
+        private readonly By _selectInstallation = By.Id("Product-47182-INST002-YES");
 
         private const string ChooseProfessionalDeliveryBtnClick = "document.querySelector(\"#delivery-methods > div > label:nth-child(3) > div > div.deliveryItem_header > div > input[type=radio]\").click()";
 
-        private const string ChooseInstallationRadioBtn = "document.querySelector(\"#Product-47180-INST002-YES\").click()";
+        private const string ChooseInstallationRadioBtn = "document.querySelector(\"#Product-47182-INST002-YES\").click()";
 
         private static readonly By _closePopUp = By.CssSelector("#om-z3df03lhtmhoa1j1vtdj-optin > div > button > svg > path");
 
@@ -61,7 +61,7 @@ namespace YaleApplianceUITests.Pages
 
         private IWebElement PopUpBtn => _webDriverContext.Driver.FindElement(_popUpBtn);
 
-        private IWebElement ChooseInstallation => _webDriverContext.Driver.FindElement(_chooseInstallation);
+        private IWebElement ChooseInstallation => _webDriverContext.Driver.FindElement(_selectInstallation);
 
 
 
@@ -141,23 +141,18 @@ namespace YaleApplianceUITests.Pages
             try
             {
                      ClosePopUP.Click();
-                     wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.Id("NormalCheckout")));
-                     _webActions.MoveTo(_webDriverContext.Driver,AddToCartBtn,AddToCartBtn);
-                     wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.Id("Product-47180-INST002-YES")));
-
-                      _webDriverContext.Driver.ExecuteJavaScript(ChooseInstallationRadioBtn);
+                     wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.Id("Product-47182-INST002-YES")));
+                     _webDriverContext.Driver.ExecuteJavaScript(ChooseInstallationRadioBtn);
                      wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.CssSelector("#zip-code-form > div.zip-code__submitblock > div > input")));
                      ZipCodeTxt.SendKeys("02122");
                      ZipCodeSubmitBtn.Click();
-                     return this;
+                return this;
             }
 
             catch (Exception e)
 
             {
-                wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.Id("NormalCheckout")));
-                _webActions.MoveTo(_webDriverContext.Driver, AddToCartBtn, AddToCartBtn);
-                wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.Id("Product-47180-INST002-YES")));
+                wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.Id("Product-47182-INST002-YES")));
                 _webDriverContext.Driver.ExecuteJavaScript(ChooseInstallationRadioBtn);
                 wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.CssSelector("#zip-code-form > div.zip-code__submitblock > div > input")));
                 ZipCodeTxt.SendKeys("02122");

@@ -78,7 +78,11 @@ namespace YaleApplianceUITests.Pages
         }
 
 
+        public bool ProductAddedSuccesfully()
+        {
+            return false;
         }
+    }
     }
 
 
