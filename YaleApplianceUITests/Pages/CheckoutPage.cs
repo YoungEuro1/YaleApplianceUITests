@@ -36,7 +36,7 @@ namespace YaleApplianceUITests.Pages
 
         private readonly By _zipCodeSubmitBtn = By.CssSelector("#zip-code-form > div.zip-code__submitblock > div");
 
-        private readonly By _selectInstallation = By.Id("Product-47182-INST002-YES");
+       // private readonly By _selectInstallation = By.Id("Product-47182-INST002-YES");
 
         private const string ChooseProfessionalDeliveryBtnClick = "document.querySelector(\"#delivery-methods > div > label:nth-child(3) > div > div.deliveryItem_header > div > input[type=radio]\").click()";
 
@@ -46,9 +46,9 @@ namespace YaleApplianceUITests.Pages
 
         private static readonly By  _popUpBtn = By.CssSelector("#bakersfield-ButtonElement--9V7TsM2j7LkTgGSHPmpL");
 
+        private readonly By _selectInstallation = By.XPath("/html/body/div[1]/div/div[3]/div[1]/div[3]/div[1]/div[1]/div[1]/div/div[4]/div/div[2]/div[1]/input");
+
         #endregion
-
-
 
 
         private IWebElement ClosePopUP => _webDriverContext.Driver.FindElement(_closePopUp);
@@ -61,7 +61,7 @@ namespace YaleApplianceUITests.Pages
 
         private IWebElement PopUpBtn => _webDriverContext.Driver.FindElement(_popUpBtn);
 
-        private IWebElement ChooseInstallation => _webDriverContext.Driver.FindElement(_selectInstallation);
+        private IWebElement SelectInstallation => _webDriverContext.Driver.FindElement(_selectInstallation);
 
 
 
@@ -89,7 +89,7 @@ namespace YaleApplianceUITests.Pages
                 _webActions.Click(AddToCartBtn);
                 return this;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 {
                     _webActions.MoveTo(_webDriverContext.Driver, AddToCartBtn, AddToCartBtn);
@@ -118,7 +118,7 @@ namespace YaleApplianceUITests.Pages
                         return this;
                     }
                     
-                    catch(Exception e)
+                    catch(Exception)
 
                     {
                         wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.CssSelector("#delivery-methods > div > label:nth-child(3) > div > div.deliveryItem_header > div > input[type=radio]")));
@@ -129,7 +129,8 @@ namespace YaleApplianceUITests.Pages
                     }
 
                     return this;
-                }
+        }
+
 
 
         public CheckoutPage AddDishwasherInstallation()
@@ -141,19 +142,21 @@ namespace YaleApplianceUITests.Pages
             try
             {
                      ClosePopUP.Click();
-                     wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.Id("Product-47182-INST002-YES")));
-                     _webDriverContext.Driver.ExecuteJavaScript(ChooseInstallationRadioBtn);
+                     ((IJavaScriptExecutor)_webDriverContext.Driver).ExecuteScript("arguments[0].scrollIntoView(true);", SelectInstallation);
+                     SelectInstallation.Click();
+                     //  _webDriverContext.Driver.ExecuteJavaScript(ChooseInstallationRadioBtn);
                      wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.CssSelector("#zip-code-form > div.zip-code__submitblock > div > input")));
                      ZipCodeTxt.SendKeys("02122");
                      ZipCodeSubmitBtn.Click();
                 return this;
             }
 
-            catch (Exception e)
+            catch (Exception)
 
             {
-                wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.Id("Product-47182-INST002-YES")));
-                _webDriverContext.Driver.ExecuteJavaScript(ChooseInstallationRadioBtn);
+                ((IJavaScriptExecutor)_webDriverContext.Driver).ExecuteScript("arguments[0].scrollIntoView(true);", SelectInstallation);
+                 SelectInstallation.Click();
+              //  _webDriverContext.Driver.ExecuteJavaScript(ChooseInstallationRadioBtn);
                 wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.CssSelector("#zip-code-form > div.zip-code__submitblock > div > input")));
                 ZipCodeTxt.SendKeys("02122");
                 ZipCodeSubmitBtn.Click();

@@ -77,11 +77,6 @@ namespace YaleApplianceUITests.Pages
             return this;
         }
 
-
-        public bool ProductAddedSuccesfully()
-        {
-            return false;
-        }
     }
     }
 
