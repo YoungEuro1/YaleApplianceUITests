@@ -27,8 +27,17 @@ http://chromedriver.chromium.org/downloads?
 
 Feature files 
 
-
 Extend business use case coverage using specflow feature files per feature area. 
+Scenarios created within the feature file should be synonomous to the feature 
+Specflow is a BDD/Cucumber tool that allows one to write business requirements in an readable/ non technical readable manner using Gherkin principals.
+Specflow enables you to write ATTD tests and serves as a great tool for test case managmeent purposes aswell. 
+
+
+Page Object Model 
+Pages that are transitioned during a user's checkout journey are represented as it's own object/class. 
+Within the classes are various elements required to be captured for the use case journeys. 
+Page elements are identified by using various selenium locator methods i.e By (Id,Css,JsPath and Xpath)
+
 
 
 CI 
