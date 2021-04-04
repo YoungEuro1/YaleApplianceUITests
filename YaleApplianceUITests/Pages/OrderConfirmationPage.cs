@@ -30,19 +30,22 @@ namespace YaleApplianceUITests.Pages
         #region Locators
 
         private readonly By _orderConfirmationMsg = By.CssSelector("body > div.main-wrapper > div > div.cart > div > div > div.page-thanks__mainTitle");
+        private readonly  By _deliveryConfirmation = By.CssSelector("body > div.main-wrapper > div > div.cart > div > div > div.page-thanks__wrapp > div.page-thanks__advantages > div:nth-child(2) > div > p");
 
         #endregion
-
-
         public IWebElement OrderConfirmationMsg => _webDriverContext.Driver.FindElement(_orderConfirmationMsg);
+
+        public IWebElement DeliveryConfirmation => _webDriverContext.Driver.FindElement(_deliveryConfirmation);
 
 
 
         public OrderConfirmationPage OrderConfirmationMessage()
         {
+            _webActions.WaitForUrlToContains(_webDriverContext.Driver, "thank-you",_wait);
             Assert.That(OrderConfirmationMsg.Displayed.Equals(true));
-            Assert.That(_webDriverContext.Driver.Url.Contains("https://www.yaleappliance.com/shopping-cart/thank-you"));
+           // Assert.That(_webDriverContext.Driver.Url.Contains("thank-you"));
             return this;
         }
+
     }
 }

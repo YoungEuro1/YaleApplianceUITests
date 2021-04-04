@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Threading;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.Extensions;
 using OpenQA.Selenium.Support.UI;
 using YaleApplianceUITests.Factories;
 using YaleApplianceUITests.Fixtures;
+using YaleApplianceUITests.SharedLibrary.Extensions;
 using YaleApplianceUITests.SharedLibrary.Interfaces;
 using YaleApplianceUITests.SharedLibrary.Services;
 
@@ -26,12 +28,12 @@ namespace YaleApplianceUITests.Pages
         }
 
         #region Locators
-
         private readonly By _compactorsBtn = By.CssSelector("body > div.main-wrapper > div > section > div > div.appliances > div:nth-child(2) > a > div");
         private readonly By _dishwasherBtn = By.CssSelector("body > div.main-wrapper > div > section > div > div.appliances > div:nth-child(1) > a > div");
         private readonly By _dishwasherViewDetailsBtn = By.CssSelector("#products-list-container > div > div:nth-child(5) > div > div.catalogue-item__descr > div.catalogue-item__descr-view > a");
         private readonly  By _addToCart =By.CssSelector("#products-list-container > div > div:nth-child(1) > div > div.catalogue-item__body > div > p.catalogue-item__info-cta > a");
-        private readonly By _addToCartBtn = By.Id("NormalCheckout");
+        private readonly By _addTypeToCart = By.CssSelector("# ColorPopup35705 > div.addToCart-new__media > div.addToCart-new__media-body > table > tbody > tr:nth-child(1) > td:nth-child(3) > a");
+        private const string AddTypeToCart = "document.querySelector(\"#ColorPopup35705 > div.addToCart-new__media > div.addToCart-new__media-body > table > tbody > tr:nth-child(1) > td:nth-child(3) > a\").click()";
         #endregion
 
         private IWebElement CompactorBtn => _webDriverContext.Driver.FindElement(_compactorsBtn);
@@ -41,8 +43,7 @@ namespace YaleApplianceUITests.Pages
 
         private IWebElement AddToCart => _webDriverContext.Driver.FindElement(_addToCart);
 
-        private IWebElement AddToCartBtn => _webDriverContext.Driver.FindElement(_addToCartBtn);
-
+        //private IWebElement AddTypeToCart => _webDriverContext.Driver.FindElement(_addTypeToCart);
 
 
         public DishwasherPage GoToDishwasherPage()
@@ -54,9 +55,15 @@ namespace YaleApplianceUITests.Pages
         public void AddDishwasherToCart()
         {
             _wait.Until(x => x.FindElement(_dishwasherBtn).Displayed);
-            DishwasherBtn.Click();
+            _webActions.Click(DishwasherBtn);
+           // DishwasherBtn.Click();
             Thread.Sleep(TimeSpan.FromSeconds(3));
+            ((IJavaScriptExecutor)_webDriverContext.Driver).ExecuteScript("arguments[0].scrollIntoView(true);", AddToCart);
             _webActions.MoveTo(_webDriverContext.Driver, AddToCart, AddToCart);
+            //_wait.Until(x => x.FindElement(_addTypeToCart).Displayed);
+            //_webDriverContext.Driver.FindElementByJs(AddTypeToCart);
+            //_webDriverContext.Driver.ExecuteJavaScript(AddTypeToCart);
+
         }
     }
 }

@@ -19,8 +19,6 @@ namespace YaleApplianceUITests.Pages
         private readonly WebDriverWait _wait;
         private readonly ScenarioContext _scenarioContext;
 
-
-
         public PaymentPage(WebDriverContext webDriverContext, EnvironmentFixture environmentFixture)
         {
             _environmentFixture = environmentFixture;
@@ -30,7 +28,6 @@ namespace YaleApplianceUITests.Pages
         }
 
         #region Locators
-
         private readonly By _firstName = By.CssSelector("#CheckoutViewModel_BillingAddress_FirstName");
         private readonly By _lastName = By.CssSelector("#CheckoutViewModel_BillingAddress_LastName");
         private readonly By _email = By.CssSelector("#CheckoutViewModel_BillingAddress_Email");
@@ -44,19 +41,12 @@ namespace YaleApplianceUITests.Pages
         private readonly By _cardNumber = By.CssSelector("#CheckoutViewModel_CardInfo_CardNumber");
         private readonly By _cvv = By.CssSelector("#CheckoutViewModel_CardInfo_Cvv");
         private readonly By _yaleName = By.CssSelector("#CheckoutViewModel_CardInfo_CardHolder");
-
-        private const string PlaceOrderBtn =
-            "document.querySelector(\"#form > div > div:nth-child(1) > div.shopping-cart__total > div:nth-child(2) > input\").click()";
-
-        private readonly By _popUp =
-            By.CssSelector(
-                "#om-z3df03lhtmhoa1j1vtdj-optin > div > div > div > div > div.bakersfield-row.bakersfield-row-1.Row > div > div > div.bakersfield-column.bakersfield-col-1.Column > div > div > div > div > div");
-
+        private readonly By _zipcode = By.CssSelector("#CheckoutViewModel_BillingAddress_ZipCode");
+        private const string PlaceOrderBtn = "document.querySelector(\"#form > div > div:nth-child(1) > div.shopping-cart__total > div:nth-child(2) > input\").click()";
+        private readonly By _popUp = By.CssSelector("#om-z3df03lhtmhoa1j1vtdj-optin > div > div > div > div > div.bakersfield-row.bakersfield-row-1.Row > div > div > div.bakersfield-column.bakersfield-col-1.Column > div > div > div > div > div");
         private readonly By _closePopUp = By.CssSelector("#om-z3df03lhtmhoa1j1vtdj-optin > div > button > svg > path");
         private readonly By _expiryDate = By.CssSelector("#CheckoutViewModel_CardInfo_Year");
-        private const string state = "document.querySelector(\"#CheckoutViewModel_BillingAddress_Province\").click()";
-
-
+        private readonly By _placeOrderBtn = By.CssSelector("#form > div > div:nth-child(1) > div.shopping-cart__total > div:nth-child(2) > input");
         #endregion Locator
 
         private IWebElement FirstName => _webDriverContext.Driver.FindElement(_firstName);
@@ -65,6 +55,8 @@ namespace YaleApplianceUITests.Pages
         private IWebElement Phone => _webDriverContext.Driver.FindElement(_phone);
         private IWebElement State => _webDriverContext.Driver.FindElement(_state);
         private IWebElement City => _webDriverContext.Driver.FindElement(_city);
+
+        private IWebElement ZipCode => _webDriverContext.Driver.FindElement(_zipcode);
 
         private IWebElement StreetAddress1 => _webDriverContext.Driver.FindElement(_streetAddress1);
 
@@ -87,22 +79,25 @@ namespace YaleApplianceUITests.Pages
         private IWebElement YaleName => _webDriverContext.Driver.FindElement(_yaleName);
 
 
-
         public PaymentPage EnterBillingAddress()
         {
+            Thread.Sleep(TimeSpan.FromSeconds(3));
             WebDriverWait wait = new WebDriverWait(_webDriverContext.Driver, TimeSpan.FromSeconds(60));
-            _webActions.WaitForUrlToContains(_webDriverContext.Driver, "https://www.yaleappliance.com/shopping-cart/payment", _wait);
+            var select = new SelectElement(State);
+            _webActions.WaitForUrlToContains(_webDriverContext.Driver, "shopping-cart/payment", _wait);
+            _wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(_state));
+            _webActions.MoveToAndHold(_webDriverContext.Driver, State);
+            State.Click();
+            select.SelectByText("Rhode Island");
             wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.CssSelector("#CheckoutViewModel_BillingAddress_FirstName")));
             FirstName.SendKeys(_environmentFixture.Environment.User.FirstName);
             LastName.SendKeys(_environmentFixture.Environment.User.LastName);
             Email.SendKeys(_environmentFixture.Environment.User.Email);
             Phone.SendKeys(_environmentFixture.Environment.User.Phone);
-            _webActions.MoveTo(_webDriverContext.Driver, State, State);
-            State.SendKeys("Rhode Island");
             City.SendKeys(_environmentFixture.Environment.User.City);
+            ZipCode.SendKeys("02122");
             StreetAddress1.SendKeys(_environmentFixture.Environment.User.Address);
             StreetAddress2.SendKeys(_environmentFixture.Environment.User.Address);
-
             return this;
         }
 
@@ -116,7 +111,6 @@ namespace YaleApplianceUITests.Pages
                     return EnterPaymentDetailsForYaleCard(paymentType);
                 default:
                     return EnterPaymentDetails(paymentType);
-
             }
         }
         
@@ -146,12 +140,10 @@ namespace YaleApplianceUITests.Pages
 
         public PaymentPage PlaceOrder()
         {
-            Thread.Sleep(TimeSpan.FromSeconds(3));
+            _wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(_placeOrderBtn));
             _webDriverContext.Driver.ExecuteJavaScript(PlaceOrderBtn);
-            return this;
+           return this;
         }
 
     }
     }
-
-

@@ -23,3 +23,34 @@ Scenario Outline: Place an Order
 	| Yale Card        |
 	| Discover         |
 
+
+
+	
+
+Scenario Outline: Place an Order For Same Day Delivery  
+	Given User is on the yale's refrigerator page
+	And   Refrigerator available for same day delivery is added to cart
+	And   Billing details are added
+	And   Payment details are added '<paymenttype>'
+	When  Placing Order
+	Then  Order should be placed successfully
+	Examples: 
+	| paymenttype      |
+	| Visa             |
+
+
+		
+
+Scenario Outline: Place an Order For Personal Pickup
+	Given User is on the yale's refrigerator page
+	And   Refrigerator available for personal pickup is added to cart
+	And   Billing details are added
+	And   Payment details are added '<paymenttype>'
+	When  Placing Order
+	Then  Order should be placed successfully
+	Examples: 
+	| paymenttype      |
+	| Visa             |
+
+
+

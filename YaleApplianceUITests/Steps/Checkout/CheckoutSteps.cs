@@ -14,7 +14,6 @@ namespace YaleApplianceUITests.Steps.Checkout
         private readonly RefrigeratorPage _refrigeratorPage;
 
 
-
         public CheckoutSteps(CheckoutPage checkoutPage, PaymentPage paymentPage, OrderConfirmationPage orderConfirmationPage, DishwasherPage dishwasherPage, RefrigeratorPage refrigeratorPage)
         {
             _checkoutPage = checkoutPage;
@@ -29,6 +28,21 @@ namespace YaleApplianceUITests.Steps.Checkout
         public void GivenUserIsOnARefrigeratorPage()
         {
             _checkoutPage.GoToRefrigeratorPageUrl();
+        }
+
+        [Given(@"User is on the yale's refrigerator page")]
+        public void GivenUserIsOnTheYaleSRefrigeratorPage()
+        {
+            _refrigeratorPage.GoToYalesRefrigeratorPageUrl();
+        }
+
+
+        [Given(@"Refrigerator available for personal pickup is added to cart")]
+        public void GivenRefrigeratorAvailableForPersonalPickupIsAddedToCart()
+        {
+            _refrigeratorPage.ViewRefrigeratorForMultipleDeliveryOptions();
+            _refrigeratorPage.AddToCartBtn();
+            _checkoutPage.ChoosePersonalPickupOption();
         }
 
         [Given(@"User is on the dishwasher product page")]
@@ -50,6 +64,13 @@ namespace YaleApplianceUITests.Steps.Checkout
         }
 
 
+        [Given(@"Next day delivery is added to cart")]
+        public void GivenNextDayDeliveryIsAddedToCart()
+        {
+            _checkoutPage.SameDayDelivery();
+        }
+
+
         [Given(@"Product is added to cart")]
         public void GivenProductIsAddedToCart()
         {
@@ -60,14 +81,13 @@ namespace YaleApplianceUITests.Steps.Checkout
         public void GivenRefrigeratorIsAddedToCart()
         {
             _refrigeratorPage.ClickAddToCartBtn();
-    
         }
 
 
         [Given(@"Delivery details are added")]
         public void GivenDeliveryDetailsAreAdded()
         {
-            _checkoutPage.ChooseProfessionalDelivery();
+            _checkoutPage.ChooseYaleDeliveryOption();
         }
 
 
@@ -81,6 +101,22 @@ namespace YaleApplianceUITests.Steps.Checkout
         public void GivenPaymentDetailsAreAdded(string paymentType)
         {
             _paymentPage.PaymentMethodHelper(paymentType);
+        }
+
+
+        [Given(@"Refrigerator available for same day delivery is added to cart")]
+        public void GivenRefrigeratorAvailableForSameDayDeliveryIsAddedToCart()
+        {
+            _refrigeratorPage.ViewRefrigeratorForMultipleDeliveryOptions();
+            _refrigeratorPage.AddToCartBtn();
+            _checkoutPage.SameDayDelivery();
+        }
+
+
+        [Given(@"Refrigerator available for yale delivery is added to cart")]
+        public void GivenRefrigeratorAvailableForYaleDeliveryIsAddedToCart()
+        {
+            ScenarioContext.Current.Pending();
         }
 
 

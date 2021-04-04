@@ -12,6 +12,8 @@
 
         public string RefrigeratorPageUrl { get; set; }
 
+        public string YaleApplianceHomePageUrl { get; set; }
+
         public User User { get; set; }
 
     }

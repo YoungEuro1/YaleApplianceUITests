@@ -7,8 +7,6 @@ Feature: CheckoutWithDishwasher
 	And go through the checkout process successfully. 
 
 
-
-
 Scenario Outline: Place an Order for Dishwasher and Installation 
 Given User is on the dishwasher product page
 And Dishwasher is added to cart
@@ -20,4 +18,7 @@ Then Order should be placed successfully
 Examples: 
 | paymenttype      |
 | Visa             |
+
+
+
 

@@ -127,6 +127,25 @@ namespace YaleApplianceUITests.SharedLibrary.Services
         }
 
 
+        public void MoveToAndHold(IWebDriver driver, IWebElement target)
+        {
+            try
+            {
+                if (target.IsElementDisplayed())
+                {
+                    target.Actions()
+                        .MoveToElement(target)
+                        .ClickAndHold()
+                        .Perform();
+                }
+            }
+            catch (NoSuchElementException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+
     }
 }
 
