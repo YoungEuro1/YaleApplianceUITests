@@ -25,7 +25,6 @@ Scenario Outline: Place an Order
 
 
 
-	
 
 Scenario Outline: Place an Order For Same Day Delivery  
 	Given User is on the yale's refrigerator page

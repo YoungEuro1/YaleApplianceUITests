@@ -113,13 +113,6 @@ namespace YaleApplianceUITests.Steps.Checkout
         }
 
 
-        [Given(@"Refrigerator available for yale delivery is added to cart")]
-        public void GivenRefrigeratorAvailableForYaleDeliveryIsAddedToCart()
-        {
-            ScenarioContext.Current.Pending();
-        }
-
-
         [When(@"Placing Order")]
         public void WhenPlacingOrder()
         {

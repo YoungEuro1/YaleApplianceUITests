@@ -144,8 +144,6 @@ namespace YaleApplianceUITests.SharedLibrary.Services
                 Console.WriteLine(e.Message);
             }
         }
-
-
     }
 }
 

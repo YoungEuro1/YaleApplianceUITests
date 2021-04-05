@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Threading;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Support.Extensions;
 using OpenQA.Selenium.Support.UI;
 using YaleApplianceUITests.Factories;
 using YaleApplianceUITests.Fixtures;
-using YaleApplianceUITests.SharedLibrary.Extensions;
 using YaleApplianceUITests.SharedLibrary.Interfaces;
 using YaleApplianceUITests.SharedLibrary.Services;
 
@@ -43,8 +41,6 @@ namespace YaleApplianceUITests.Pages
 
         private IWebElement AddToCart => _webDriverContext.Driver.FindElement(_addToCart);
 
-        //private IWebElement AddTypeToCart => _webDriverContext.Driver.FindElement(_addTypeToCart);
-
 
         public DishwasherPage GoToDishwasherPage()
         {
@@ -56,14 +52,9 @@ namespace YaleApplianceUITests.Pages
         {
             _wait.Until(x => x.FindElement(_dishwasherBtn).Displayed);
             _webActions.Click(DishwasherBtn);
-           // DishwasherBtn.Click();
             Thread.Sleep(TimeSpan.FromSeconds(3));
             ((IJavaScriptExecutor)_webDriverContext.Driver).ExecuteScript("arguments[0].scrollIntoView(true);", AddToCart);
             _webActions.MoveTo(_webDriverContext.Driver, AddToCart, AddToCart);
-            //_wait.Until(x => x.FindElement(_addTypeToCart).Displayed);
-            //_webDriverContext.Driver.FindElementByJs(AddTypeToCart);
-            //_webDriverContext.Driver.ExecuteJavaScript(AddTypeToCart);
-
         }
     }
 }

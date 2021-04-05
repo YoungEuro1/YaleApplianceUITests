@@ -18,7 +18,3 @@ Then Order should be placed successfully
 Examples: 
 | paymenttype      |
 | Visa             |
-
-
-
-

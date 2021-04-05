@@ -8,7 +8,7 @@
         "feature": "en-us"
       },
 
-      "Name": "Test",
+      "Name": "Stage",
       "Browser": "Chrome",
       "CheckoutUrl": "https://www.yaleappliance.com/kitchen/refrigeration-appliances/counter-depth/french-door/RF18HFENBSR#CallForPricing8958",
       "DishwasherPageUrl": "https://stage.yaleappliance.com/kitchen/dishwasher-compactors/",
@@ -26,4 +26,3 @@
     }
   ]
 }
-
