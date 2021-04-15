@@ -47,7 +47,7 @@ namespace YaleApplianceUITests.Pages
 
         private static readonly By  _popUpBtn = By.CssSelector("#bakersfield-ButtonElement--9V7TsM2j7LkTgGSHPmpL");
 
-        private readonly By _selectInstallation = By.XPath("/html/body/div[1]/div/div[3]/div[1]/div[3]/div[1]/div[1]/div[1]/div/div[4]/div/div[2]/div[1]/input");
+        private readonly By _selectInstallation = By.XPath("/html/body/div[1]/div/div[3]/div[1]/div[3]/div[1]/div[1]/div[1]/div/div[3]/div/div[2]/div[1]/input");
 
         private readonly By _personalPickupBtn = By.CssSelector("#delivery-methods > div > label:nth-child(4) > div > div.deliveryItem_header > div > input[type=radio]");
 

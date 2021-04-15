@@ -124,6 +124,5 @@ namespace YaleApplianceUITests.Steps.Checkout
         {
             _orderConfirmationPage.OrderConfirmationMessage();
         }
-
     }
 }

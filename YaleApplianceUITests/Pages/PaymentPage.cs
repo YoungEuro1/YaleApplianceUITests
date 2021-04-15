@@ -118,7 +118,7 @@ namespace YaleApplianceUITests.Pages
       public PaymentPage EnterPaymentDetails(string paymentType)
       {
           WebDriverWait wait = new WebDriverWait(_webDriverContext.Driver, TimeSpan.FromSeconds(60));
-            _webActions.WaitForPresenceOfElementLocatedBy(CardholderName, _cardholderName); 
+            _webActions.Clickable(CardholderName); 
           CardholderName.SendKeys(_environmentFixture.Environment.User.FirstName);
           wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.CssSelector("#CheckoutViewModel_CardInfo_CardProvider")));
           PaymentType.SendKeys(paymentType); 

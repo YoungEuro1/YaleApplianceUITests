@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Internal;
 using OpenQA.Selenium.Support.UI;
@@ -37,7 +38,31 @@ namespace YaleApplianceUITests.SharedLibrary.Services
             {
 
                 Console.WriteLine(e.StackTrace);
+                throw new Exception(e.StackTrace);
             }
+        }
+
+
+        public bool Clickable(IWebElement element)
+        {
+            var wait = new WebDriverWait(((IWrapsDriver)element).WrappedDriver, TimeSpan.FromSeconds(10));
+            try
+            {
+                if (element.Displayed.Equals(true))
+                {
+                    wait.IgnoreExceptionTypes(typeof(StaleElementReferenceException));
+                    wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(element));
+                    return true;
+                }
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine(e.StackTrace);
+                throw new Exception(e.StackTrace);
+          
+            }
+            return false;
         }
 
         public IEnumerable<IWebElement> WaitForPresenceOfAllElementsLocatedBy(IWebDriver driver, By locator)
@@ -70,20 +95,6 @@ namespace YaleApplianceUITests.SharedLibrary.Services
             }
         }
 
-        public IWebElement WaitForPresenceOfElementLocatedBy(IWebElement element, By locator)
-        {
-            var wait = new WebDriverWait(((IWrapsDriver)element).WrappedDriver, TimeSpan.FromSeconds(10));
-            try
-            {
-                wait.IgnoreExceptionTypes(typeof(StaleElementReferenceException));
-                return wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(locator));
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-                throw new NoSuchElementException($"elements with Locator <{locator}> are not found");
-            }
-        }
 
         public bool WaitForUrlToContains(IWebDriver driver, string url, WebDriverWait wait)
         {
@@ -123,6 +134,24 @@ namespace YaleApplianceUITests.SharedLibrary.Services
             catch (NoSuchElementException e)
             {
                 Console.WriteLine(e.Message);
+                throw new NoSuchElementException(e.StackTrace);
+            }
+        }
+
+        public void WaitUntilDocumentIsReady(IWebDriver driver, TimeSpan timeoutInSeconds)
+        {
+            var javaScriptExecutor = driver as IJavaScriptExecutor;
+            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeoutInSeconds.Seconds));
+
+            try
+            {
+                Func<IWebDriver, bool> readyCondition = webDriver => (bool)javaScriptExecutor.ExecuteScript("return (document.readyState == 'complete' && jQuery.active == 0)");
+                wait.Until(readyCondition);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.InnerException);
+                throw new Exception(e.StackTrace);
             }
         }
 
@@ -142,6 +171,7 @@ namespace YaleApplianceUITests.SharedLibrary.Services
             catch (NoSuchElementException e)
             {
                 Console.WriteLine(e.Message);
+                throw new NoSuchElementException(e.StackTrace);
             }
         }
     }
