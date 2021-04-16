@@ -14,7 +14,6 @@ namespace YaleApplianceUITests.Pages
         private readonly WebDriverContext _webDriverContext;
         private readonly IWebActions _webActions;
         private readonly WebDriverWait _wait;
-        private readonly ScenarioContext _scenarioContext;
 
         public HomePage(WebDriverContext webDriverContext)
         {

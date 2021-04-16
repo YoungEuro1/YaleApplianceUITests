@@ -42,6 +42,7 @@ namespace YaleApplianceUITests.Pages
 
         #endregion
 
+        #region PageElements
 
         private IWebElement ClosePopUP => _webDriverContext.Driver.FindElement(_closePopUp);
 
@@ -62,6 +63,8 @@ namespace YaleApplianceUITests.Pages
         private IWebElement PersonalPickUp => _webDriverContext.Driver.FindElement(_personalPickUp);
 
         private IWebElement SameDay => _webDriverContext.Driver.FindElement(_sameDay);
+
+        #endregion
 
 
         public RefrigeratorPage GoToRefrigeratorPageUrl()

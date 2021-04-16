@@ -34,12 +34,16 @@ namespace YaleApplianceUITests.Pages
         private const string AddTypeToCart = "document.querySelector(\"#ColorPopup35705 > div.addToCart-new__media > div.addToCart-new__media-body > table > tbody > tr:nth-child(1) > td:nth-child(3) > a\").click()";
         #endregion
 
+        #region PageElements
+
         private IWebElement CompactorBtn => _webDriverContext.Driver.FindElement(_compactorsBtn);
         private IWebElement DishwasherBtn => _webDriverContext.Driver.FindElement(_dishwasherBtn);
 
         private IWebElement DishwasherViewDetailsBtn => _webDriverContext.Driver.FindElement(_dishwasherViewDetailsBtn);
 
         private IWebElement AddToCart => _webDriverContext.Driver.FindElement(_addToCart);
+
+        #endregion
 
 
         public DishwasherPage GoToDishwasherPage()

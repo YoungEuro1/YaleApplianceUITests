@@ -47,7 +47,7 @@ namespace YaleApplianceUITests.Pages
 
         private static readonly By  _popUpBtn = By.CssSelector("#bakersfield-ButtonElement--9V7TsM2j7LkTgGSHPmpL");
 
-        private readonly By _selectInstallation = By.XPath("/html/body/div[1]/div/div[3]/div[1]/div[3]/div[1]/div[1]/div[1]/div/div[3]/div/div[2]/div[1]/input");
+        private readonly By _selectInstallation = By.CssSelector("#Product-31540-INST002-YES");
 
         private readonly By _personalPickupBtn = By.CssSelector("#delivery-methods > div > label:nth-child(4) > div > div.deliveryItem_header > div > input[type=radio]");
 
@@ -56,6 +56,7 @@ namespace YaleApplianceUITests.Pages
         #endregion
 
 
+        #region PageElements
         private IWebElement ClosePopUP => _webDriverContext.Driver.FindElement(_closePopUp);
 
         private IWebElement AddToCartBtn => _webDriverContext.Driver.FindElement(_addToCartBtn);
@@ -71,6 +72,10 @@ namespace YaleApplianceUITests.Pages
         private IWebElement PersonalPickupBtn => _webDriverContext.Driver.FindElement(_personalPickupBtn);
 
         private IWebElement SameDayBtn => _webDriverContext.Driver.FindElement(_sameDayDeliveryBtn);
+
+
+        #endregion
+
 
         public CheckoutPage GoToRefrigeratorPageUrl()
         {

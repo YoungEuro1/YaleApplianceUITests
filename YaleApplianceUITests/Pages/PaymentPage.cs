@@ -49,6 +49,8 @@ namespace YaleApplianceUITests.Pages
         private readonly By _placeOrderBtn = By.CssSelector("#form > div > div:nth-child(1) > div.shopping-cart__total > div:nth-child(2) > input");
         #endregion Locator
 
+        #region PageElements
+
         private IWebElement FirstName => _webDriverContext.Driver.FindElement(_firstName);
         private IWebElement LastName => _webDriverContext.Driver.FindElement(_lastName);
         private IWebElement Email => _webDriverContext.Driver.FindElement(_email);
@@ -77,6 +79,8 @@ namespace YaleApplianceUITests.Pages
         private IWebElement ClosePopUo => _webDriverContext.Driver.FindElement(_closePopUp);
 
         private IWebElement YaleName => _webDriverContext.Driver.FindElement(_yaleName);
+
+        #endregion
 
 
         public PaymentPage EnterBillingAddress()
