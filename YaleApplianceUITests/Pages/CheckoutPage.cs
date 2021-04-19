@@ -33,7 +33,7 @@ namespace YaleApplianceUITests.Pages
 
         private readonly By _zipCodeTxt = By.ClassName("zip-code__input");
 
-        private readonly By _zipCodeSubmitBtn = By.CssSelector("#zip-code-form > div.zip-code__submitblock > div");
+        private readonly By _zipCodeSubmitBtn = By.CssSelector("#zip-code-form>div.zip-code__submitblock>div");
 
         private const string ChooseYaleDelivery = "document.querySelector(\"#delivery-methods > div > label:nth-child(2) > div > div.deliveryItem_header > div > input[type=radio]\").click()";
 
@@ -43,21 +43,21 @@ namespace YaleApplianceUITests.Pages
 
         private const string ContinueBtn = "document.querySelector(\"#shopping-cart-items > div.shopping-cart__wrapper > div:nth-child(1) > div.delivery-item__blocks > div > div.shoppCode_form > input\").click()";
 
-        private static readonly By _closePopUp = By.CssSelector("#om-z3df03lhtmhoa1j1vtdj-optin > div > button > svg > path");
+        //private static readonly By _closePopUp = By.CssSelector("#om-z3df03lhtmhoa1j1vtdj-optin>div>button>svg>path");
 
         private static readonly By  _popUpBtn = By.CssSelector("#bakersfield-ButtonElement--9V7TsM2j7LkTgGSHPmpL");
 
         private readonly By _selectInstallation = By.CssSelector("#Product-31540-INST002-YES");
 
-        private readonly By _personalPickupBtn = By.CssSelector("#delivery-methods > div > label:nth-child(4) > div > div.deliveryItem_header > div > input[type=radio]");
+        private readonly By _personalPickupBtn = By.CssSelector("#delivery-methods>div>label:nth-child(4)>div>div.deliveryItem_header>div>input[type=radio]");
 
-        private readonly By _sameDayDeliveryBtn = By.CssSelector("#delivery-methods > div > label:nth-child(3) > div > div.deliveryItem_header > div > input[type=radio]");
+        private readonly By _sameDayDeliveryBtn = By.CssSelector("#delivery-methods>div>label:nth-child(3)>div>div.deliveryItem_header>div>input[type=radio]");
 
         #endregion
 
 
         #region PageElements
-        private IWebElement ClosePopUP => _webDriverContext.Driver.FindElement(_closePopUp);
+        //private IWebElement ClosePopUP => _webDriverContext.Driver.FindElement(_closePopUp);
 
         private IWebElement AddToCartBtn => _webDriverContext.Driver.FindElement(_addToCartBtn);
 
@@ -89,7 +89,7 @@ namespace YaleApplianceUITests.Pages
             WebDriverWait wait = new WebDriverWait(_webDriverContext.Driver, TimeSpan.FromSeconds(60));
             try
             {
-                ClosePopUP.Click();
+                //ClosePopUP.Click();
                 _webActions.MoveTo(_webDriverContext.Driver, AddToCartBtn, AddToCartBtn);
                 _webActions.Click(AddToCartBtn);
                 return this;
@@ -113,7 +113,7 @@ namespace YaleApplianceUITests.Pages
 
                     try
                     {
-                        ClosePopUP.Click();
+                        //ClosePopUP.Click();
                         wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.CssSelector("#delivery-methods > div > label:nth-child(2) > div > div.deliveryItem_header > div > input[type=radio]")));
                         _webDriverContext.Driver.ExecuteJavaScript(ChooseYaleDelivery);
                         wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.CssSelector("#zip-code-form > div.zip-code__submitblock > div > input")));
@@ -143,7 +143,7 @@ namespace YaleApplianceUITests.Pages
 
             try
             {
-                ClosePopUP.Click();
+                //ClosePopUP.Click();
                 wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.CssSelector("#delivery-methods > div > label:nth-child(4) > div > div.deliveryItem_header > div > input[type=radio]")));
                 wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(_personalPickupBtn));
                 ((IJavaScriptExecutor)_webDriverContext.Driver).ExecuteScript("arguments[0].scrollIntoView(true);", PersonalPickupBtn);
@@ -175,7 +175,7 @@ namespace YaleApplianceUITests.Pages
 
             try
             {
-                     ClosePopUP.Click();
+                     //ClosePopUP.Click();
                      ((IJavaScriptExecutor)_webDriverContext.Driver).ExecuteScript("arguments[0].scrollIntoView(true);", SelectInstallation);
                      SelectInstallation.Click();
                      wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.CssSelector("#zip-code-form > div.zip-code__submitblock > div > input")));
@@ -205,7 +205,7 @@ namespace YaleApplianceUITests.Pages
 
             try
             {
-                ClosePopUP.Click();
+                //ClosePopUP.Click();
                 wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(_sameDayDeliveryBtn));
                 ((IJavaScriptExecutor)_webDriverContext.Driver).ExecuteScript("arguments[0].scrollIntoView(true);", SameDayBtn);
                 _webDriverContext.Driver.ExecuteJavaScript(ChooseSameDayDelivery);

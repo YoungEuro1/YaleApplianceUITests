@@ -12,11 +12,12 @@ namespace YaleApplianceUITests
     [Binding]
     public sealed class Hooks
     {
-        
+
         private static IObjectContainer _objectContainer;
-        private static  ScenarioContext _scenarioContext;
+        private static ScenarioContext _scenarioContext;
         private static EnvironmentFixture _environmentFixture;
         private static WebDriverContext _webDriverContext;
+
 
 
         public Hooks(IObjectContainer objectContainer, EnvironmentFixture environmentFixture, ScenarioContext scenarioContext)
@@ -30,7 +31,7 @@ namespace YaleApplianceUITests
         [BeforeScenario]
         public void BeforeScenario()
         {
-            _objectContainer.RegisterInstanceAs(_webDriverContext);
+            _objectContainer.RegisterInstanceAs<WebDriverContext>(_webDriverContext);
         }
 
 
@@ -41,16 +42,22 @@ namespace YaleApplianceUITests
         }
 
 
-        [AfterTestRun()]
+        [AfterScenario()]
+        public static void AfterScenario()
+        {
+        }
+
+
+        [AfterTestRun(Order = 0)]
         private static void KillProcess()
         {
-            var driver = _objectContainer.Resolve<WebDriverContext>();
-            driver?.Driver.Close();
-            driver?.Driver.Dispose();
-            driver?.Driver.Quit();
 
+           // var driver = _objectContainer.Resolve<WebDriverContext>();
+           // driver?.Driver.Close();
+            // driver?.Driver.Dispose();
+            //driver?.Driver.Quit();
             String taskKill = "taskkill.exe";
-            string chrome = "/F /IM chrome.exe*";
+            //string chrome = "/F /IM chrome.exe*";
             string chromeDriver = "/F /IM chromedriver.exe*";
             string msedgeDriver = "/F /IM msedgedriver.exe*";
             string edge = "/F /IM  msedge.exe*";

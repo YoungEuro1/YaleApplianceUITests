@@ -43,10 +43,10 @@ namespace YaleApplianceUITests.Pages
         private readonly By _yaleName = By.CssSelector("#CheckoutViewModel_CardInfo_CardHolder");
         private readonly By _zipcode = By.CssSelector("#CheckoutViewModel_BillingAddress_ZipCode");
         private const string PlaceOrderBtn = "document.querySelector(\"#form > div > div:nth-child(1) > div.shopping-cart__total > div:nth-child(2) > input\").click()";
-        private readonly By _popUp = By.CssSelector("#om-z3df03lhtmhoa1j1vtdj-optin > div > div > div > div > div.bakersfield-row.bakersfield-row-1.Row > div > div > div.bakersfield-column.bakersfield-col-1.Column > div > div > div > div > div");
-        private readonly By _closePopUp = By.CssSelector("#om-z3df03lhtmhoa1j1vtdj-optin > div > button > svg > path");
+        private readonly By _popUp = By.CssSelector("#om-z3df03lhtmhoa1j1vtdj-optin>div>div>div>div>div.bakersfield-row.bakersfield-row-1.Row>div>div>div.bakersfield-column.bakersfield-col-1.Column>div>div>div>div>div");
+       // private readonly By _closePopUp = By.CssSelector("#om-z3df03lhtmhoa1j1vtdj-optin>div>button>svg>path");
         private readonly By _expiryDate = By.CssSelector("#CheckoutViewModel_CardInfo_Year");
-        private readonly By _placeOrderBtn = By.CssSelector("#form > div > div:nth-child(1) > div.shopping-cart__total > div:nth-child(2) > input");
+        private readonly By _placeOrderBtn = By.CssSelector("#form>div>div:nth-child(1)>div.shopping-cart__total>div:nth-child(2)>input");
         #endregion Locator
 
         #region PageElements
@@ -76,7 +76,7 @@ namespace YaleApplianceUITests.Pages
 
         private IWebElement PopUo => _webDriverContext.Driver.FindElement(_popUp);
 
-        private IWebElement ClosePopUo => _webDriverContext.Driver.FindElement(_closePopUp);
+       // private IWebElement ClosePopUo => _webDriverContext.Driver.FindElement(_closePopUp);
 
         private IWebElement YaleName => _webDriverContext.Driver.FindElement(_yaleName);
 

@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 using TechTalk.SpecFlow;
 using YaleApplianceUITests.Pages;
 
@@ -124,5 +125,6 @@ namespace YaleApplianceUITests.Steps.Checkout
         {
             _orderConfirmationPage.OrderConfirmationMessage();
         }
+
     }
 }

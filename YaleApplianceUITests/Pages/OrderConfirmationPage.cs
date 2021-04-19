@@ -44,6 +44,7 @@ namespace YaleApplianceUITests.Pages
         {
             _webActions.WaitForUrlToContains(_webDriverContext.Driver, "thank-you",_wait);
             Assert.That(OrderConfirmationMsg.Displayed.Equals(true));
+           // _webDriverContext.Driver.Close();
             return this;
         }
     }

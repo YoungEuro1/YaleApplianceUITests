@@ -26,11 +26,11 @@ namespace YaleApplianceUITests.Pages
         }
 
         #region Locators
-        private readonly By _compactorsBtn = By.CssSelector("body > div.main-wrapper > div > section > div > div.appliances > div:nth-child(2) > a > div");
-        private readonly By _dishwasherBtn = By.CssSelector("body > div.main-wrapper > div > section > div > div.appliances > div:nth-child(1) > a > div");
-        private readonly By _dishwasherViewDetailsBtn = By.CssSelector("#products-list-container > div > div:nth-child(5) > div > div.catalogue-item__descr > div.catalogue-item__descr-view > a");
-        private readonly  By _addToCart =By.CssSelector("#products-list-container > div > div:nth-child(1) > div > div.catalogue-item__body > div > p.catalogue-item__info-cta > a");
-        private readonly By _addTypeToCart = By.CssSelector("# ColorPopup35705 > div.addToCart-new__media > div.addToCart-new__media-body > table > tbody > tr:nth-child(1) > td:nth-child(3) > a");
+        private readonly By _compactorsBtn = By.CssSelector("body>div.main-wrapper>div>section>div>div.appliances>div:nth-child(2)>a>div");
+        private readonly By _dishwasherBtn = By.CssSelector("body>div.main-wrapper>div>section>div>div.appliances>div:nth-child(1)>a>div");
+        private readonly By _dishwasherViewDetailsBtn = By.CssSelector("#products-list-container>div>div:nth-child(5)>div>div.catalogue-item__descr>div.catalogue-item__descr-view>a");
+        private readonly  By _addToCart =By.CssSelector("#products-list-container>div>div:nth-child(1)>div>div.catalogue-item__body>div>p.catalogue-item__info-cta>a");
+        private readonly By _addTypeToCart = By.CssSelector("#ColorPopup35705>div.addToCart-new__media>div.addToCart-new__media-body>table>tbody>tr:nth-child(1)>td:nth-child(3)>a");
         private const string AddTypeToCart = "document.querySelector(\"#ColorPopup35705 > div.addToCart-new__media > div.addToCart-new__media-body > table > tbody > tr:nth-child(1) > td:nth-child(3) > a\").click()";
         #endregion
 

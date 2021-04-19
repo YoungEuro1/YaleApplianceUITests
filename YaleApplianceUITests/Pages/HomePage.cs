@@ -133,7 +133,7 @@ namespace YaleApplianceUITests.Pages
             Assert.True(_webActions.Clickable(ReturnPolicy));
             Assert.True(_webActions.Clickable(PriceGuarantee));
             Assert.True(_webActions.Clickable(DeliveryPolicy));
-
+            _webDriverContext.Driver.Close();
             //((IJavaScriptExecutor)_webDriverContext.Driver).ExecuteScript("window.scrollTo(0, document.body.scrollHeight - 150)");
             //IJavaScriptExecutor js = (IJavaScriptExecutor)_webDriverContext.Driver; js.ExecuteScript("window.scrollTo(0, 0)");
         }

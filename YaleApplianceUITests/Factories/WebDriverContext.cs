@@ -5,6 +5,7 @@ using System.Security.Cryptography.X509Certificates;
 using Microsoft.Edge.SeleniumTools;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Remote;
 using TechTalk.SpecFlow;
 using YaleApplianceUITests.Steps;
 
@@ -64,6 +65,25 @@ namespace YaleApplianceUITests.Factories
             Driver.Manage().Cookies.DeleteAllCookies();
             return this;
         }
+
+
+        private WebDriverContext Saucelabs()
+        {
+            var chromeOptions = new ChromeOptions();
+            chromeOptions.AddAdditionalCapability("username", "YoungEuro1", true);
+            chromeOptions.AddAdditionalCapability("accessKey", "2737fdc8-bc04-4275-8ebe-9bf0f3d623ae", true);
+            chromeOptions.AddAdditionalCapability("platform", "Windows 10", true);
+            chromeOptions.AddAdditionalCapability("version", "latest", true);
+            chromeOptions.AddAdditionalCapability("maxInstances","100", true);
+            chromeOptions.AddAdditionalCapability("commandTimeout", "600", true);
+            chromeOptions.AddAdditionalCapability("maxDuration", "1200", true);
+            chromeOptions.AddAdditionalCapability("name", "UI Regression Test Suite", true);
+            chromeOptions.AddAdditionalCapability("idleTimeout", "5", true);
+            this.Driver = new RemoteWebDriver(new Uri("https://YoungEuro1:2737fdc8-bc04-4275-8ebe-9bf0f3d623ae@ondemand.eu-central-1.saucelabs.com:443/wd/hub"), chromeOptions.ToCapabilities());
+
+           // { maxInstances: 100, seleniumVersion: "3.5.3", chromedriverVersion: "2.32", commandTimeout: 600, maxDuration: 1200 }
+            return this;
+        }
         
          #endregion
 
@@ -77,7 +97,9 @@ namespace YaleApplianceUITests.Factories
                      return Chrome();
                  case "edge":
                      return Edge();
-                 default:
+                 case "saucelabs":
+                     return Saucelabs();
+                default:
                      throw new Exception(
                          $"{browser} browser name is not supported in this test framework");
              }
