@@ -88,7 +88,7 @@ namespace YaleApplianceUITests.Steps.Checkout
         [Given(@"Delivery details are added")]
         public void GivenDeliveryDetailsAreAdded()
         {
-            _checkoutPage.ChooseYaleDeliveryOption();
+            _checkoutPage.ChooseProfessionalDeliveryOption();
         }
 
 

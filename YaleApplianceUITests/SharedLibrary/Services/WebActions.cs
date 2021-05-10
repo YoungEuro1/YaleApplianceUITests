@@ -174,6 +174,27 @@ namespace YaleApplianceUITests.SharedLibrary.Services
                 throw new NoSuchElementException(e.StackTrace);
             }
         }
+
+        public bool ClickElementUsingJs(string element, IWebDriver driver)
+        {
+            try
+            {
+                IJavaScriptExecutor executor = (IJavaScriptExecutor)driver;
+                executor.ExecuteScript(element);
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
+        public void ScrollToElement(int x, int y, IWebDriver driver)
+        {
+            IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
+            js.ExecuteScript("window.scrollBy(" + x + ", " + y + ");");
+        }
     }
 }
 

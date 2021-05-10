@@ -38,9 +38,7 @@ namespace YaleApplianceUITests.Pages
 
         private IWebElement CompactorBtn => _webDriverContext.Driver.FindElement(_compactorsBtn);
         private IWebElement DishwasherBtn => _webDriverContext.Driver.FindElement(_dishwasherBtn);
-
         private IWebElement DishwasherViewDetailsBtn => _webDriverContext.Driver.FindElement(_dishwasherViewDetailsBtn);
-
         private IWebElement AddToCart => _webDriverContext.Driver.FindElement(_addToCart);
 
         #endregion

@@ -43,8 +43,9 @@ namespace YaleApplianceUITests.SharedLibrary.Extensions
                     result = true;
                     break;
                 }
-                catch (StaleElementReferenceException)
+                catch (StaleElementReferenceException e)
                 {
+                    Console.WriteLine(e.Message);
                 }
 
                 attempts++;
@@ -66,7 +67,6 @@ namespace YaleApplianceUITests.SharedLibrary.Extensions
             }
         }
 
-   
         public static IWebElement FindElementByJs(this IWebDriver driver, string jsCommand)
         {
             return (IWebElement)((IJavaScriptExecutor)driver).ExecuteScript(jsCommand);
@@ -107,6 +107,5 @@ namespace YaleApplianceUITests.SharedLibrary.Extensions
             return new Actions(driver);
 
         }
-
     }
 }

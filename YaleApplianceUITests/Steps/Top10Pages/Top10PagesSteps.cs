@@ -8,9 +8,9 @@ namespace YaleApplianceUITests.Steps.Top10Pages
     [Binding, Parallelizable]
     public sealed class Top10PagesSteps
     {
-        private readonly HomePage _homePage;
+        private readonly Pages.HomePage _homePage;
 
-        public Top10PagesSteps(HomePage homePage)
+        public Top10PagesSteps(Pages.HomePage homePage)
         {
             _homePage = homePage;
         }
@@ -19,7 +19,7 @@ namespace YaleApplianceUITests.Steps.Top10Pages
         [Given(@"User is on the Yale HomePage'(.*)'")]
         public void GivenUserIsOnTheYaleHomePages(Uri url)
         {
-            _homePage.GoToYaleHomePage(url);
+            _homePage.GoToYaleHomePage();
         }
 
 

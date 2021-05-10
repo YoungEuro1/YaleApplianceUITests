@@ -28,8 +28,7 @@ namespace YaleApplianceUITests.Pages
         }
 
         #region Locators
-
-       // private static readonly By _closePopUp = By.CssSelector("#om-z3df03lhtmhoa1j1vtdj-optin>div>button>svg>path");
+        // private static readonly By _closePopUp = By.CssSelector("#om-z3df03lhtmhoa1j1vtdj-optin>div>button>svg>path");
         private static readonly By _popUpBtn = By.CssSelector("#bakersfield-ButtonElement--9V7TsM2j7LkTgGSHPmpL");
         private readonly By _counterDepthBtn = By.XPath("/html/body/div[1]/div/section/div/div[2]/div[1]/a/div");
         private readonly By _frenchDoorBtn = By.XPath("/html/body/div[1]/div/section/div/div[2]/ul[2]/li[1]/a/b");
@@ -39,40 +38,26 @@ namespace YaleApplianceUITests.Pages
         private readonly By _viewRefrigeratorForDeliveryOptions = By.CssSelector("body>div.main-wrapper>div>div.trending-product-gall>div.trending-product-gall__wrapper.slick-initialized.slick-slider>div.slick-list.draggable>div>div:nth-child(5)>a");
         private readonly By _personalPickUp = By.CssSelector("#delivery-methods > div > label:nth-child(4) > div > div.deliveryItem_header > div > input[type=radio]");
         private readonly By _sameDay = By.CssSelector("#delivery-methods>div>label:nth-child(4)>div>div.deliveryItem_header>div>input[type=radio]");
-
         #endregion
 
         #region PageElements
-
         //private IWebElement ClosePopUP => _webDriverContext.Driver.FindElement(_closePopUp);
-
         private IWebElement PopUpBtn => _webDriverContext.Driver.FindElement(_popUpBtn);
-
         private IWebElement CounterDepthBtn => _webDriverContext.Driver.FindElement(_counterDepthBtn);
-
         private IWebElement FrenchDoorBtn => _webDriverContext.Driver.FindElement(_frenchDoorBtn);
-
         private IWebElement GetItNowBtn => _webDriverContext.Driver.FindElement(_getItNowBtn);
-
         private IWebElement GetItNow => _webDriverContext.Driver.FindElement(_getItNow);
-
         private IWebElement RefrigeratorType => _webDriverContext.Driver.FindElement(_refrigeratorType);
-
         private IWebElement ViewRefrigeratorForDeliveryOptions => _webDriverContext.Driver.FindElement(_viewRefrigeratorForDeliveryOptions);
-
         private IWebElement PersonalPickUp => _webDriverContext.Driver.FindElement(_personalPickUp);
-
         private IWebElement SameDay => _webDriverContext.Driver.FindElement(_sameDay);
-
         #endregion
-
 
         public RefrigeratorPage GoToRefrigeratorPageUrl()
         {
             _webDriverContext.Driver.Navigate().GoToUrl(_environmentFixture.Environment.RefrigeratorPageUrl);
             return this;
         }
-
 
         public RefrigeratorPage ClickAddToCartBtn()
         {
@@ -101,7 +86,6 @@ namespace YaleApplianceUITests.Pages
             return this;
         }
 
-
         public RefrigeratorPage AddToCartBtn()
         {
             Thread.Sleep(TimeSpan.FromSeconds(3));
@@ -109,7 +93,6 @@ namespace YaleApplianceUITests.Pages
             GetItNow.Click();
             return this;
         }
-
 
         public RefrigeratorPage SelectPersonalPickupDelivery()
         {
@@ -126,8 +109,4 @@ namespace YaleApplianceUITests.Pages
 
         }
     }
-
 }
-
-
-

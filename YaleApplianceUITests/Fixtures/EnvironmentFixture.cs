@@ -13,7 +13,7 @@ namespace YaleApplianceUITests.Fixtures
         {
             public EnvironmentFixture()
             {
-                System.Environment.SetEnvironmentVariable("EnvironmentName", "Stage");
+                System.Environment.SetEnvironmentVariable("EnvironmentName", "Production");
                 var environmentName = System.Environment.GetEnvironmentVariable(Constants.EnvironmentName);
                 Environment = GetEnvironment(environmentName);
             }

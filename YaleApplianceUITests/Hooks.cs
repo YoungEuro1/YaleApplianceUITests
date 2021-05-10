@@ -57,11 +57,11 @@ namespace YaleApplianceUITests
             // driver?.Driver.Dispose();
             //driver?.Driver.Quit();
             String taskKill = "taskkill.exe";
-            //string chrome = "/F /IM chrome.exe*";
+            string chrome = "/F /IM chrome.exe*";
             string chromeDriver = "/F /IM chromedriver.exe*";
             string msedgeDriver = "/F /IM msedgedriver.exe*";
             string edge = "/F /IM  msedge.exe*";
-           // Process.Start(taskKill, chrome);
+            Process.Start(taskKill, chrome);
             Process.Start(taskKill, chromeDriver);
             Process.Start(taskKill, msedgeDriver);
             Process.Start(taskKill, edge);

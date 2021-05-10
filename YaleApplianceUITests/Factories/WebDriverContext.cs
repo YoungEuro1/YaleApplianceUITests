@@ -1,13 +1,17 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.Edge.SeleniumTools;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+//using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Remote;
 using TechTalk.SpecFlow;
 using YaleApplianceUITests.Steps;
+using EdgeDriverService = Microsoft.Edge.SeleniumTools.EdgeDriverService;
+using EdgeOptions = Microsoft.Edge.SeleniumTools.EdgeOptions;
 
 
 namespace YaleApplianceUITests.Factories
@@ -23,7 +27,7 @@ namespace YaleApplianceUITests.Factories
             SwitchToBrowser(EnvironmentFixture.Environment.Browser);
         }
 
-        #region WebDrivers
+       #region WebDrivers
 
  
         private WebDriverContext Chrome()
@@ -45,14 +49,15 @@ namespace YaleApplianceUITests.Factories
             var path = Uri.UnescapeDataString(uri.Path);
             var directoryPath = Path.GetDirectoryName(path);
             this.Driver = new ChromeDriver(directoryPath + "\\drivers", options, TimeSpan.FromSeconds(60));
+            Driver.Manage().Cookies.DeleteAllCookies();
+            Driver.Manage().Window.Maximize();
             return this;
         }
 
 
         private WebDriverContext Edge()
         {
-            var options = new EdgeOptions();
-            options.AddAdditionalCapability("InPrivate", true);
+            var options = new EdgeOptions {UseInPrivateBrowsing = true};
             //options.AddArgument("headless");
             var codeBase = Assembly.GetExecutingAssembly().CodeBase;
             var uri = new UriBuilder(codeBase);
@@ -104,6 +109,7 @@ namespace YaleApplianceUITests.Factories
                          $"{browser} browser name is not supported in this test framework");
              }
          }
+
     }
 }
 

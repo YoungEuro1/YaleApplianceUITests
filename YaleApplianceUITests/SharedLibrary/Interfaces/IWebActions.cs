@@ -15,6 +15,9 @@ namespace YaleApplianceUITests.SharedLibrary.Interfaces
         void MoveTo(IWebDriver driver, IWebElement source, IWebElement target);
         void MoveToAndHold(IWebDriver driver, IWebElement target);
         void WaitUntilDocumentIsReady(IWebDriver driver, TimeSpan timeoutInSeconds);
+        bool ClickElementUsingJs(string element, IWebDriver driver);
+        void ScrollToElement(int x, int y, IWebDriver driver);
+
     }
 }
 
